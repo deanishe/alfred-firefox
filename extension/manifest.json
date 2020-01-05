@@ -1,0 +1,44 @@
+{
+  "browser_action": {
+    "browser_style": true,
+    "default_title": "Alfred-Firefox",
+    "default_popup": "window.html",
+
+    "default_icon": {
+      "16": "icons/active.svg",
+      "32": "icons/active.svg",
+      "64": "icons/active.svg"
+    }
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "alfredfirefox@deanishe.net",
+      "strict_min_version": "70.0"
+    }
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "bookmarks",
+    "history",
+    "tabs",
+    "nativeMessaging"
+  ],
+
+  "background": {
+    "scripts": ["alfred.js"],
+    "persistent": true
+  },
+
+  "icons": {
+    "48": "icons/active.svg",
+    "96": "icons/active.svg"
+  },
+
+  "manifest_version": 2,
+  "name": "Alfred-Firefox",
+  "version": "1.0",
+  "description": "Integrates Firefox with Alfred."
+}
+

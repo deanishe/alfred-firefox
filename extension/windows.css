@@ -1,0 +1,62 @@
+html>body {
+	color: #444;
+	margin: 0;
+	max-width: 350px;
+	padding: 0;
+}
+
+html > body > * {
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+header,
+footer {
+	margin: 0;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+header {
+	background-color: rgb(92, 31, 135);
+	padding-bottom: 16px;
+	padding-top: 16px;
+}
+
+footer {
+	color: #888;
+	font-size: 90%;
+	padding-bottom: 16px;
+	text-align: center;
+}
+
+h1 {
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	line-height: 32px;
+	margin: 0;
+}
+
+h1 > * {
+	display: inline-block;
+	margin: 0 6px;
+}
+
+ul {
+	margin: 0;
+	padding: 16px 0;
+	list-style: none;
+}
+
+li {
+	margin-left: 0;
+	margin-bottom: 8px;
+}
+
+hr {
+	border: 0;
+	height: 0;
+	border-top: 1px solid #aaa;
+	width: 100%;
+}
