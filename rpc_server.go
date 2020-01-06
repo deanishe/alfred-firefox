@@ -8,6 +8,7 @@ import (
 	"log"
 	"net"
 	"net/rpc"
+	"os"
 	"time"
 
 	"github.com/deanishe/awgo/util"
@@ -36,6 +37,10 @@ func newRPCService(addr string, client *firefox) (*rpcServer, error) {
 	}
 
 	if s.listener, err = net.Listen("unix", s.sock); err != nil {
+		return nil, err
+	}
+
+	if err = os.Chmod(addr, 0600); err != nil {
 		return nil, err
 	}
 

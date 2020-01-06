@@ -9,14 +9,13 @@ package main
 // TODO: implement setup (save native application manifest)
 // TODO: implement tab scripts (injectable JS)?
 // TODO: package extension
-// TODO: chmod socket to secure it from other users
-// TODO: move socket to /tmp/firefox.username.sock?
 
 import (
 	"bufio"
 	"flag"
 	"fmt"
 	"os"
+	"os/user"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -104,7 +103,8 @@ func init() {
 	}
 	pidFile = filepath.Join(wf.CacheDir(), "server.pid")
 	logfile = filepath.Join(wf.CacheDir(), fmt.Sprintf("%s.server.log", wf.BundleID()))
-	socketPath = filepath.Join(os.Getenv("HOME"), ".alfred-firefox.sock")
+	u, _ := user.Current()
+	socketPath = fmt.Sprintf("/tmp/alfred-firefox.%s.sock", u.Uid)
 }
 
 func run() {
