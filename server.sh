@@ -1,11 +1,14 @@
 #!/bin/zsh
 
+# This script is a wrapper for the Firefox extension client/RPC server
+# to set an Alfred-like environment when it is run by Firefox.
+
 here="${${(%):-%x}:A:h}"
 
 # getvar <name> | Read a value from info.plist
 getvar() {
     local v="$1"
-    /usr/libexec/PlistBuddy -c "Print :$v" info.plist
+    /usr/libexec/PlistBuddy -c "Print :$v" "${here}/info.plist"
 }
 
 export alfred_workflow_bundleid=$( getvar "bundleid" )

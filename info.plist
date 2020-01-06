@@ -958,8 +958,13 @@ variables={allvars}
 		<key>URL_DEFAULT</key>
 		<string>Open in Firefox</string>
 		<key>URL_OPT</key>
-		<string>Open in Chrome</string>
+		<string>Open in Safari</string>
 	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>TAB_CTRL</string>
+		<string>TAB_GODOC</string>
+	</array>
 	<key>version</key>
 	<string>0.0.1</string>
 	<key>webaddress</key>
