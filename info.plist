@@ -97,6 +97,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>83477ED1-950C-4E4D-9D22-CDEC701CA68D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56FBB613-EE25-4DE4-930D-C1F51B9235D8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>93E61791-1520-4B4F-9257-C5B28A505058</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>96C33C0A-5D89-4903-97AC-E430858902FA</key>
 		<array>
 			<dict>
@@ -115,6 +141,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56FBB613-EE25-4DE4-930D-C1F51B9235D8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -490,37 +529,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>58CBD6D3-C6D1-48CF-9A34-7EE5EBA5886B</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -603,6 +611,37 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>58CBD6D3-C6D1-48CF-9A34-7EE5EBA5886B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -649,6 +688,135 @@ variables={allvars}
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>history</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading history…</string>
+				<key>script</key>
+				<string>./firefox -query "$1" history</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search Firefox History</string>
+				<key>title</key>
+				<string>Firefox History</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>93E61791-1520-4B4F-9257-C5B28A505058</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>ffass</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading…</string>
+				<key>script</key>
+				<string>./firefox -query "$1" options</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Workflow Status &amp; Option</string>
+				<key>title</key>
+				<string>Firefox Assistant</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>83477ED1-950C-4E4D-9D22-CDEC701CA68D</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -675,9 +843,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Actions for current tab</string>
 			<key>xpos</key>
-			<integer>660</integer>
+			<integer>750</integer>
 			<key>ypos</key>
-			<integer>380</integer>
+			<integer>335</integer>
 		</dict>
 		<key>56FBB613-EE25-4DE4-930D-C1F51B9235D8</key>
 		<dict>
@@ -703,9 +871,25 @@ variables={allvars}
 		<key>7D1126FC-FAE3-40C1-A536-43C272DF9E69</key>
 		<dict>
 			<key>xpos</key>
-			<integer>475</integer>
+			<integer>565</integer>
 			<key>ypos</key>
-			<integer>380</integer>
+			<integer>335</integer>
+		</dict>
+		<key>83477ED1-950C-4E4D-9D22-CDEC701CA68D</key>
+		<dict>
+			<key>note</key>
+			<string>Workflow status &amp; options</string>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>715</integer>
+		</dict>
+		<key>93E61791-1520-4B4F-9257-C5B28A505058</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>545</integer>
 		</dict>
 		<key>96C33C0A-5D89-4903-97AC-E430858902FA</key>
 		<dict>
@@ -721,7 +905,16 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>750</integer>
 			<key>ypos</key>
-			<integer>125</integer>
+			<integer>90</integer>
+		</dict>
+		<key>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</key>
+		<dict>
+			<key>note</key>
+			<string>Search history</string>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>545</integer>
 		</dict>
 		<key>AE956921-0416-405F-B748-94C23CDB2774</key>
 		<dict>

@@ -1,11 +1,17 @@
 // Copyright (c) 2019 Dean Jackson <deanishe@deanishe.net>
 // MIT Licence applies http://opensource.org/licenses/MIT
 
+// Command firefox is an Alfred workflow to interact with Firefox.
 package main
 
-// TODO: implement history search
 // TODO: implement download search
-// TODO: implement download scripts
+// TODO: implement download scripts?
+// TODO: implement setup (save native application manifest)
+// TODO: implement tab scripts (injectable JS)?
+// TODO: package extension
+// TODO: chmod socket to secure it from other users
+// TODO: move socket to /tmp/firefox.username.sock?
+// TODO: rename binary to "alfred-firefox"
 
 import (
 	"bufio"
@@ -18,6 +24,7 @@ import (
 	"time"
 
 	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/update"
 	"github.com/mitchellh/go-wordwrap"
 	"github.com/peterbourgon/ff"
 	"github.com/peterbourgon/ff/ffcli"
@@ -28,8 +35,17 @@ const (
 	wrapWidth   = 72
 )
 
+const (
+	helpURL   = "https://git.deanishe.net/deanishe/alfred-firefox-assistant/src/branch/master/README.md"
+	issuesURL = "https://git.deanishe.net/deanishe/alfred-firefox-assistant/issues"
+	repo      = "git.deanishe.net/deanishe/alfred-firefox-assistant"
+)
+
 var (
-	wf = aw.New()
+	wf = aw.New(
+		aw.HelpURL(helpURL),
+		update.Gitea(repo),
+	)
 
 	// Filepaths
 	scriptDirs = []string{
@@ -78,12 +94,14 @@ func init() {
 		bookmarkletsCmd,
 		bookmarksCmd,
 		currentTabCmd,
-		openURLCmd,
+		historyCmd,
 		runBookmarkletCmd,
 		serveCmd,
+		statusCmd,
 		tabCmd,
 		tabsCmd,
 		urlCmd,
+		updateCmd,
 	}
 	pidFile = filepath.Join(wf.CacheDir(), "server.pid")
 	logfile = filepath.Join(wf.CacheDir(), fmt.Sprintf("%s.server.log", wf.BundleID()))

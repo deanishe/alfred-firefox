@@ -1,4 +1,4 @@
-module git.deanishe.net/deanishe/alfred-firefox-assistant
+module go.deanishe.net/alfred-firefox-assistant
 
 go 1.12
 

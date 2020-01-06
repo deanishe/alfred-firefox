@@ -14,10 +14,12 @@ import (
 	"syscall"
 	"time"
 
+	aw "github.com/deanishe/awgo"
 	"github.com/peterbourgon/ff/ffcli"
 )
 
 var (
+	// starts extension client & RPC server
 	serveCmd = &ffcli.Command{
 		Name:      "serve",
 		Usage:     "firefox serve",
@@ -31,6 +33,10 @@ var (
 	}
 )
 
+// set up logging for the server.
+// doesn't use the same log as the rest of the workflow, as this is
+// a long-running process, and we don't want the log file it's using
+// being rotated by another process
 func initLogging() error {
 	if fi, err := os.Stat(logfile); err == nil {
 		if fi.Size() > int64(1048576) {
@@ -66,7 +72,7 @@ func processRunning(pid int) bool {
 	return false
 }
 
-// write PID file, killing and waiting for existing server if it exists.
+// write PID file, terminating and waiting for existing server if it exists.
 func writePID() error {
 	pid := getPID()
 	if pid != 0 {
@@ -85,7 +91,9 @@ func writePID() error {
 	return ioutil.WriteFile(pidFile, []byte(strconv.FormatInt(int64(os.Getpid()), 10)), 0600)
 }
 
+// start extension client and RPC server
 func runServer(args []string) error {
+	wf.Configure(aw.TextErrors(true))
 	if err := writePID(); err != nil {
 		return err
 	}
@@ -116,21 +124,23 @@ func runServer(args []string) error {
 		log.Printf("ping => %q", s)
 	}
 
-	var bookmarks []Bookmark
-	for _, q := range []string{"", "haze", "github", "p2p"} {
-		if err := srv.Bookmarks(q, &bookmarks); err != nil {
+	/*
+		var bookmarks []Bookmark
+		for _, q := range []string{"", "haze", "github", "p2p"} {
+			if err := srv.Bookmarks(q, &bookmarks); err != nil {
+				log.Printf("[error] %v", err)
+			} else {
+				log.Printf("bookmarks(%q) => %d result(s)", q, len(bookmarks))
+			}
+		}
+
+		var tabs []Tab
+		if err := srv.Tabs("", &tabs); err != nil {
 			log.Printf("[error] %v", err)
 		} else {
-			log.Printf("bookmarks(%q) => %d result(s)", q, len(bookmarks))
+			log.Printf("tabs => %d result(s)", len(tabs))
 		}
-	}
-
-	var tabs []Tab
-	if err := srv.Tabs("", &tabs); err != nil {
-		log.Printf("[error] %v", err)
-	} else {
-		log.Printf("tabs => %d result(s)", len(tabs))
-	}
+	*/
 
 	<-quit
 	log.Print("shutting down ...")

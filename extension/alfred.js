@@ -14,6 +14,7 @@ const iconDisconnected = 'icons/inactive.svg';
  * @param {windows.Window} - Native window object to create Window from.
  * @return {Object} - API Window object.
  */
+/*
 const Window = win => {
   let obj = {};
   win = win || {};
@@ -34,6 +35,7 @@ const Window = win => {
 
   return obj;
 };
+*/
 
 /**
  * Tab object.
@@ -51,7 +53,6 @@ const Tab = tab => {
   obj.title = tab.title || '';
   obj.url = new URL(tab.url || '');
   // obj.favicon  = tab.favIconUrl || '';
-  obj.type = tab.type || null;
   obj.active = tab.active || false;
 
   obj.toString = function() {
@@ -77,6 +78,26 @@ const Bookmark = bm => {
   obj.parentId = bm.parentId || 0;
   obj.type = bm.type || '';
   obj.url = bm.url || '';
+
+  obj.toString = function() {
+    return `#${this.id} "${this.title}" - ${this.url}`;
+  };
+
+  return obj;
+};
+
+/**
+ * HistoryEntry object.
+ * @param {history.HistoryItem} - Native history object to create HistoryEntry from.
+ * @return {Object} - API History object.
+ */
+const HistoryEntry = hi => {
+  let obj = {};
+  hi = hi || {};
+
+  obj.id = hi.id || 0;
+  obj.url = hi.url || '';
+  obj.title = hi.title || '';
 
   obj.toString = function() {
     return `#${this.id} "${this.title}" - ${this.url}`;
@@ -147,14 +168,14 @@ const Background = function() {
         case 'ping':
           p = self.ping();
           break;
-        case 'all-windows':
-          p = self.allWindows();
-          break;
+        // case 'all-windows':
+        //   p = self.allWindows();
+        //   break;
+        // case 'current-window':
+        //   p = self.currentWindow();
+        //   break;
         case 'all-tabs':
           p = self.allTabs();
-          break;
-        case 'current-window':
-          p = self.currentWindow();
           break;
         case 'current-tab':
           p = self.currentTab();
@@ -164,6 +185,9 @@ const Background = function() {
           break;
         case 'search-bookmarks':
           p = self.searchBookmarks(msg.params);
+          break;
+        case 'search-history':
+          p = self.searchHistory(msg.params);
           break;
         case 'activate-tab':
           p = self.activateTab(msg.params);
@@ -238,13 +262,27 @@ const Background = function() {
    * @return {Promise} - Resolves to array of Window objects for all windows
    * of type "normal".
    */
-  self.allWindows = () => {
-    return browser.windows
-      .getAll({ populate: true, windowTypes: ['normal'] })
-      .then(wins => {
-        return wins.map(w => Window(w));
-      });
-  };
+  // self.allWindows = () => {
+  //   return browser.windows
+  //     .getAll({ populate: true, windowTypes: ['normal'] })
+  //     .then(wins => {
+  //       return wins.map(w => Window(w));
+  //     });
+  // };
+
+  /**
+   * Handle "current-window" command.
+   * @return {Promise} - Resolves to Window for active window.
+   */
+  // self.currentWindow = () => {
+  //   return browser.windows
+  //     .getCurrent({ populate: true, windowTypes: ['normal'] })
+  //     .then(w => {
+  //       let win = Window(w);
+  //       console.log(`[current-window] ${win}`);
+  //       return win;
+  //     });
+  // };
 
   /**
    * Handle "all-tabs" command.
@@ -268,20 +306,6 @@ const Background = function() {
       })
       .then(tab => {
         return browser.windows.update(tab.windowId, { focused: true });
-      });
-  };
-
-  /**
-   * Handle "current-window" command.
-   * @return {Promise} - Resolves to Window for active window.
-   */
-  self.currentWindow = () => {
-    return browser.windows
-      .getCurrent({ populate: true, windowTypes: ['normal'] })
-      .then(w => {
-        let win = Window(w);
-        console.log(`[current-window] ${win}`);
-        return win;
       });
   };
 
@@ -323,15 +347,25 @@ const Background = function() {
    * @return {Promies} - Resolves to array of Bookmark objects matching query.
    */
   self.searchBookmarks = query => {
-    let bookmarks = [];
-    let addBookmarks = node => {
-      if (node.url) bookmarks.push(Bookmark(node));
-    };
-
     return browser.bookmarks.search(query).then(nodes => {
-      nodes.map(n => addBookmarks(n));
+      let bookmarks = nodes.filter(n => n.url).map(n => Bookmark(n));
       console.debug(`${bookmarks.length} bookmark(s) for "${query}"`);
       return bookmarks;
+    });
+  };
+
+  /**
+   * Handle "search-history" command.
+   * @param {string} query - Search query.
+   * @return {Promies} - Resolves to array of History objects matching query.
+   */
+  self.searchHistory = query => {
+    return browser.history
+      .search({ text: query, startTime: 0 })
+      .then(items => {
+        let history = items.map(it => HistoryEntry(it));
+      console.debug(`${history.length} history item(s) for "${query}"`);
+      return history;
     });
   };
 
@@ -398,11 +432,11 @@ const Background = function() {
   };
 
   /** Handle "execute-js" command. */
-  self.executeJS = js => {
-    return browser.tabs.executeScript({ code: js }).then(results => {
-      console.debug(`js=${js}, results=`, results);
-    });
-  };
+  // self.executeJS = js => {
+  //   return browser.tabs.executeScript({ code: js }).then(results => {
+  //     console.debug(`js=${js}, results=`, results);
+  //   });
+  // };
 
   /**
    * Handle "run-bookmarklet" command.
@@ -441,17 +475,6 @@ const Background = function() {
         return null;
       });
   };
-
-  /*
-  // extract JavaScript from bookmarklet
-  self.extractJS = bm => {
-    if (!bm.url.startsWith('javascript:')) {
-      throw 'not a bookmarklet';
-    }
-    let js = bm.url.slice(11);
-    return decodeURI(js);
-  };
-  */
 
   self.connectNative();
   console.log(`started`);
