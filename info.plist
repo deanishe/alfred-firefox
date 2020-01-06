@@ -704,7 +704,7 @@ variables={allvars}
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>history</string>
+				<string>hist</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -952,9 +952,9 @@ variables={allvars}
 	<key>variables</key>
 	<dict>
 		<key>TAB_CTRL</key>
-		<string>bkm:seoxED9MBuqi,Add to Pinboard</string>
+		<string>bml:seoxED9MBuqi,Add to Pinboard</string>
 		<key>TAB_GODOC</key>
-		<string>bkm:uFJCA875bTEt,Open in GoDoc</string>
+		<string>bml:uFJCA875bTEt,Open in GoDoc</string>
 		<key>URL_DEFAULT</key>
 		<string>Open in Firefox</string>
 		<key>URL_OPT</key>

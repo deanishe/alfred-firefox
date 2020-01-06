@@ -97,7 +97,7 @@ const HistoryEntry = hi => {
 
   obj.id = hi.id || 0;
   obj.url = hi.url || '';
-  obj.title = hi.title || '';
+  obj.title = hi.title || hi.url;
 
   obj.toString = function() {
     return `#${this.id} "${this.title}" - ${this.url}`;
@@ -363,7 +363,7 @@ const Background = function() {
     return browser.history
       .search({ text: query, startTime: 0 })
       .then(items => {
-        let history = items.map(it => HistoryEntry(it));
+        let history = items.filter(it => it.url).map(it => HistoryEntry(it));
       console.debug(`${history.length} history item(s) for "${query}"`);
       return history;
     });

@@ -243,7 +243,7 @@ func runBookmarklets(_ []string) error {
 		wf.NewItem(bm.Title).
 			Subtitle("↩ to execute in current tab").
 			UID(bm.ID).
-			Copytext("bkm:"+bm.ID+","+bm.Title).
+			Copytext("bml:"+bm.ID+","+bm.Title).
 			Arg(bm.URL).
 			Icon(iconBookmarklet).
 			Valid(true).
@@ -359,7 +359,7 @@ func runActions(_ []string) error {
 			}
 			wf.NewItem(a.name).
 				UID(a.id).
-				Copytext("bkm:"+a.id+","+a.name).
+				Copytext("bml:"+a.id+","+a.name).
 				Icon(iconBookmarklet).
 				Valid(true).
 				Var("CMD", "run-bookmarklet").

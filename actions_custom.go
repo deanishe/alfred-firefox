@@ -89,7 +89,7 @@ func loadCustomActions() customActions {
 			log.Printf("invalid modifier for %q", key)
 		}
 
-		if strings.HasPrefix(name, "bkm:") {
+		if strings.HasPrefix(name, "bml:") {
 			kind = "bookmarklet"
 			parts := strings.SplitN(name[4:], ",", 2)
 			id, name = parts[0], parts[1]

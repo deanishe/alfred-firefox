@@ -11,7 +11,6 @@ package main
 // TODO: package extension
 // TODO: chmod socket to secure it from other users
 // TODO: move socket to /tmp/firefox.username.sock?
-// BUG: Some history items don't have a title. Use URL instead.
 
 import (
 	"bufio"
