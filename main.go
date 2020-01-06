@@ -11,7 +11,7 @@ package main
 // TODO: package extension
 // TODO: chmod socket to secure it from other users
 // TODO: move socket to /tmp/firefox.username.sock?
-// TODO: rename binary to "alfred-firefox"
+// BUG: Some history items don't have a title. Use URL instead.
 
 import (
 	"bufio"
@@ -66,7 +66,7 @@ var (
 
 	rootFlags = flag.NewFlagSet("firefox", flag.ExitOnError)
 	rootCmd   = &ffcli.Command{
-		Usage:     "firefox <command> [flags] [args...]",
+		Usage:     "alfred-firefox <command> [flags] [args...]",
 		ShortHelp: "Firefox workflow for Alfred",
 		LongHelp: wrap(`
 		Alfred workflow to control Firefox.

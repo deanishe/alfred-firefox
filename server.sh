@@ -22,5 +22,5 @@ export alfred_workflow_data="${HOME}/Library/Application Support/Alfred/Workflow
 mkdir -p "${alfred_workflow_data}"
 mkdir -p "${alfred_workflow_cache}"
 
-exec "${here}/firefox" serve
+exec "${here}/alfred-firefox" serve
 

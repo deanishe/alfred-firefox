@@ -22,7 +22,7 @@ var (
 	// starts extension client & RPC server
 	serveCmd = &ffcli.Command{
 		Name:      "serve",
-		Usage:     "firefox serve",
+		Usage:     "alfred-firefox serve",
 		ShortHelp: "start extension server (called by Firefox)",
 		LongHelp: wrap(`
 			Run extension server. This is called by the Firefox

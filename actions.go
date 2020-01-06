@@ -128,7 +128,6 @@ func (a tAction) Run(tabID int) error {
 	default:
 		return fmt.Errorf("unknown action %q", action)
 	}
-	return nil
 }
 
 type uAction struct {

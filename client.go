@@ -18,7 +18,7 @@ var (
 	// search history
 	historyCmd = &ffcli.Command{
 		Name:      "history",
-		Usage:     "firefox -query <query> history",
+		Usage:     "alfred-firefox -query <query> history",
 		ShortHelp: "search browsing history",
 		LongHelp:  wrap(`Search Firefox browsing history.`),
 		Exec:      runHistory,
@@ -27,7 +27,7 @@ var (
 	// search bookmarks
 	bookmarksCmd = &ffcli.Command{
 		Name:      "bookmarks",
-		Usage:     "firefox -query <query> bookmarks",
+		Usage:     "alfred-firefox -query <query> bookmarks",
 		ShortHelp: "search bookmarks",
 		LongHelp:  wrap(`Search Firefox bookmarks.`),
 		Exec:      runBookmarks,
@@ -36,7 +36,7 @@ var (
 	// search bookmarklets
 	bookmarkletsCmd = &ffcli.Command{
 		Name:      "bookmarklets",
-		Usage:     "firefox -query <query> bookmarklets",
+		Usage:     "alfred-firefox -query <query> bookmarklets",
 		ShortHelp: "search bookmarklets",
 		LongHelp:  wrap(`Search Firefox bookmarklets and execute in frontmost tab.`),
 		Exec:      runBookmarklets,
@@ -47,7 +47,7 @@ var (
 		// TODO: is this used? can it be removed?
 		openURLCmd = &ffcli.Command{
 			Name:      "open-url",
-			Usage:     "firefox -url <url> open-url",
+			Usage:     "alfred-firefox -url <url> open-url",
 			ShortHelp: "open URL",
 			LongHelp:  wrap(`Open specified URL`),
 			Exec:      runOpenURL,
@@ -57,7 +57,7 @@ var (
 	// execute a bookmarklet in the specified tab
 	runBookmarkletCmd = &ffcli.Command{
 		Name:      "run-bookmarklet",
-		Usage:     "firefox [-tab <id>] -bookmark <id> run-bookmarklet",
+		Usage:     "alfred-firefox [-tab <id>] -bookmark <id> run-bookmarklet",
 		ShortHelp: "execute bookmarklet in the specified tab",
 		LongHelp: wrap(`
 			Execute a bookmarklet in a tab. Bookmark ID is required.
@@ -69,7 +69,7 @@ var (
 	// filter open tabs
 	tabsCmd = &ffcli.Command{
 		Name:      "tabs",
-		Usage:     "firefox [-query <query>] tabs",
+		Usage:     "alfred-firefox [-query <query>] tabs",
 		ShortHelp: "filter Firefox tabs",
 		LongHelp:  wrap(`Filter Firefox tabs and perform actions on them.`),
 		Exec:      runTabs,
@@ -78,7 +78,7 @@ var (
 	// filter tab & URL actions for current tab
 	currentTabCmd = &ffcli.Command{
 		Name:      "current-tab",
-		Usage:     "firefox [-query <query>] current-tab",
+		Usage:     "alfred-firefox [-query <query>] current-tab",
 		ShortHelp: "actions for current tab",
 		LongHelp:  wrap(`Filter and run actions for current tab`),
 		Exec:      runCurrentTab,
@@ -87,7 +87,7 @@ var (
 	// run a tab/URL action for the specified tab
 	tabCmd = &ffcli.Command{
 		Name:      "tab",
-		Usage:     "firefox -tab <id> -action <name> tab",
+		Usage:     "alfred-firefox -tab <id> -action <name> tab",
 		ShortHelp: "execute tab action",
 		LongHelp: wrap(`
 			Execute specified action on tab. Both URL and tab actions
@@ -99,7 +99,7 @@ var (
 	// run action for URL
 	urlCmd = &ffcli.Command{
 		Name:      "url",
-		Usage:     "firefox -url <url> -action <name> url",
+		Usage:     "alfred-firefox -url <url> -action <name> url",
 		ShortHelp: "execute URL action",
 		LongHelp:  wrap(`Execute specified action on URL`),
 		Exec:      runURLAction,
@@ -108,7 +108,7 @@ var (
 	// filter URL (and tab) actions
 	actionsCmd = &ffcli.Command{
 		Name:      "actions",
-		Usage:     "firefox [-tab <id>] [-url <url>] [-query <query>] actions",
+		Usage:     "alfred-firefox [-tab <id>] [-url <url>] [-query <query>] actions",
 		ShortHelp: "filter tab/URL actions",
 		LongHelp:  wrap(`View/filter and execute tab/URL actions.`),
 		Exec:      runActions,
@@ -117,7 +117,7 @@ var (
 	// check for update
 	updateCmd = &ffcli.Command{
 		Name:      "update",
-		Usage:     "firefox update",
+		Usage:     "alfred-firefox update",
 		ShortHelp: "check for workflow update",
 		LongHelp:  wrap(`Check if newer version of workflow is available.`),
 		Exec:      runUpdate,
@@ -126,7 +126,7 @@ var (
 	// show workflow status
 	statusCmd = &ffcli.Command{
 		Name:      "options",
-		Usage:     "firefox [-query <query>] options",
+		Usage:     "alfred-firefox [-query <query>] options",
 		ShortHelp: "show workflow status & options",
 		LongHelp:  wrap(`Show workflow status, info and options.`),
 		Exec:      runStatus,

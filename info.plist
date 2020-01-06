@@ -283,7 +283,7 @@
 				<key>runningsubtext</key>
 				<string>Loading results…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" bookmarks</string>
+				<string>./alfred-firefox -query "$1" bookmarks</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -330,7 +330,7 @@
 				<key>runningsubtext</key>
 				<string>Loading actions…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" actions</string>
+				<string>./alfred-firefox -query "$1" actions</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -379,7 +379,7 @@
 				<key>runningsubtext</key>
 				<string>Loading results…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" bookmarklets</string>
+				<string>./alfred-firefox -query "$1" bookmarklets</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -439,7 +439,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./firefox $CMD "$1"</string>
+				<string>./alfred-firefox $CMD "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -552,7 +552,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string>Loading actions…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" current-tab</string>
+				<string>./alfred-firefox -query "$1" current-tab</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -667,7 +667,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string>Loading tabs…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" tabs</string>
+				<string>./alfred-firefox -query "$1" tabs</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -716,7 +716,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string>Loading history…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" history</string>
+				<string>./alfred-firefox -query "$1" history</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>

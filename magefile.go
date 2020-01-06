@@ -19,7 +19,7 @@ import (
 const (
 	buildDir   = "./build"
 	distDir    = "./dist"
-	binaryName = "firefox"
+	binaryName = "alfred-firefox"
 )
 
 var (
