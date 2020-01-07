@@ -48,6 +48,13 @@ func (c *rpcClient) History(query string) ([]History, error) {
 	return history, err
 }
 
+// Downloads searches Firefox downloads.
+func (c *rpcClient) Downloads(query string) ([]Download, error) {
+	var downloads []Download
+	err := c.client.Call("Firefox.Downloads", query, &downloads)
+	return downloads, err
+}
+
 // Tabs returns all Firefox tabs.
 func (c *rpcClient) Tabs() ([]Tab, error) {
 	var tabs []Tab

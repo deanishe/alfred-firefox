@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
 
 	aw "github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/util"
@@ -22,6 +23,15 @@ var (
 		ShortHelp: "search browsing history",
 		LongHelp:  wrap(`Search Firefox browsing history.`),
 		Exec:      runHistory,
+	}
+
+	// search downloads
+	downloadsCmd = &ffcli.Command{
+		Name:      "downloads",
+		Usage:     "alfred-firefox -query <query> downloads",
+		ShortHelp: "search downloads",
+		LongHelp:  wrap(`Search Firefox downloads.`),
+		Exec:      runDownloads,
 	}
 
 	// search bookmarks
@@ -446,6 +456,27 @@ func runStatus(_ []string) error {
 	}
 
 	wf.WarnEmpty("No Matching Items", "Try a different query?")
+	wf.SendFeedback()
+	return nil
+}
+
+func runDownloads(_ []string) error {
+	log.Printf("searching downloads for %q ...", query)
+	downloads, err := mustClient().Downloads(query)
+	if err != nil {
+		return err
+	}
+
+	for _, dl := range downloads {
+		wf.NewItem(filepath.Base(dl.Path)).
+			Subtitle(util.PrettyPath(dl.Path)).
+			Arg(dl.Path).
+			UID(dl.Path).
+			Icon(&aw.Icon{Value: dl.Path, Type: aw.IconTypeFileIcon}).
+			Valid(true)
+	}
+
+	wf.WarnEmpty("Nothing Found", "Try a different query?")
 	wf.SendFeedback()
 	return nil
 }

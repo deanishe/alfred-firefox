@@ -164,6 +164,21 @@ func (s *rpcServer) History(query string, history *[]History) error {
 	return nil
 }
 
+// Downloads searches Firefox downloads.
+func (s *rpcServer) Downloads(query string, downloads *[]Download) error {
+	defer util.Timed(time.Now(), fmt.Sprintf("search download for %q", query))
+	var (
+		r   responseDownload
+		err error
+	)
+	err = s.ff.call("search-downloads", query, &r)
+	if err != nil {
+		return err
+	}
+	*downloads = r.Downloads
+	return nil
+}
+
 // func (s *rpcServer) RunJS(script string, _ *struct{}) error {
 // 	defer util.Timed(time.Now(), "execute JS")
 // 	var r responseNone
@@ -225,6 +240,10 @@ type responseTabCurrent struct {
 
 type responseBookmarks struct {
 	Bookmarks []Bookmark `json:"payload"`
+}
+
+type responseDownload struct {
+	Downloads []Download `json:"payload"`
 }
 
 type responseBool struct {

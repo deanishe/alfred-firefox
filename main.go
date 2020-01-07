@@ -4,8 +4,6 @@
 // Command firefox is an Alfred workflow to interact with Firefox.
 package main
 
-// TODO: implement download search
-// TODO: implement download scripts?
 // TODO: implement setup (save native application manifest)
 // TODO: implement tab scripts (injectable JS)?
 // TODO: package extension
@@ -92,6 +90,7 @@ func init() {
 		bookmarkletsCmd,
 		bookmarksCmd,
 		currentTabCmd,
+		downloadsCmd,
 		historyCmd,
 		runBookmarkletCmd,
 		serveCmd,

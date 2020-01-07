@@ -70,7 +70,9 @@ func (bm Bookmark) JavaScript() string {
 	return s
 }
 
-// History is an entry from the browser history.
+// History is an entry from the browser history. It contains a subset of the properties
+// of a native history.HistoryItem object.
+// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/history/HistoryItem
 type History struct {
 	ID    string `json:"id"`    // unique ID
 	Title string `json:"title"` // page title
@@ -79,4 +81,21 @@ type History struct {
 
 func (h History) String() string {
 	return fmt.Sprintf("History(id=%q, title=%q, url=%q)", h.ID, h.Title, h.URL)
+}
+
+// Download is a file downloaded by Firefox. Contains a subset of the properties
+// of a Firefox downloads.DownloadItem object.
+// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/downloads/DownloadItem
+type Download struct {
+	ID       int    `json:"id"`     // unique ID
+	Path     string `json:"path"`   // absolute filepath to downloaded file
+	Size     int64  `json:"size"`   // size of file in bytes
+	URL      string `json:"url"`    // URL file was downloaded from
+	MimeType string `json:"mime"`   // mime type of file
+	Exists   bool   `json:"exists"` // whether Path still exists on disk
+	Err      string `json:"error"`  // error message
+}
+
+func (d Download) String() string {
+	return fmt.Sprintf("Download(id=%q, path=%q, url=%q)", d.ID, d.Path, d.URL)
 }

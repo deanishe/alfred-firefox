@@ -39,7 +39,7 @@ const Window = win => {
 
 /**
  * Tab object.
- * @param {tabs.Tab} - Native tab object to create Tab from.
+ * @param {tabs.Tab} tab - Native tab object to create Tab from.
  * @return {Object} - API Tab object.
  */
 const Tab = tab => {
@@ -64,8 +64,7 @@ const Tab = tab => {
 
 /**
  * Bookmark object.
- * @param {bookmarks.BookmarkTreeNode} - Native bookmark object to create
- * Bookmark from.
+ * @param {bookmarks.BookmarkTreeNode} bm - Native object to create Bookmark from.
  * @return {Object} - API Bookmark object.
  */
 const Bookmark = bm => {
@@ -88,7 +87,7 @@ const Bookmark = bm => {
 
 /**
  * HistoryEntry object.
- * @param {history.HistoryItem} - Native history object to create HistoryEntry from.
+ * @param {history.HistoryItem} hi - Native object to create HistoryEntry from.
  * @return {Object} - API History object.
  */
 const HistoryEntry = hi => {
@@ -101,6 +100,30 @@ const HistoryEntry = hi => {
 
   obj.toString = function() {
     return `#${this.id} "${this.title}" - ${this.url}`;
+  };
+
+  return obj;
+};
+
+/**
+ * Download object.
+ * @param {downloads.DownloadItem} di - Native object to create Download from.
+ * @return {Object} - API Download object.
+ */
+const Download = di => {
+  let obj = {};
+  di = di || {};
+
+  obj.id = di.id || 0;
+  obj.path = di.filename || '';
+  obj.size = di.fileSize || 0;
+  obj.url = di.url || '';
+  obj.mime = di.mime || '';
+  obj.exists = di.exists || false;
+  obj.error = di.error || '';
+
+  obj.toString = function() {
+    return `#${this.id} "${this.path}" - ${this.url}`;
   };
 
   return obj;
@@ -188,6 +211,9 @@ const Background = function() {
           break;
         case 'search-history':
           p = self.searchHistory(msg.params);
+          break;
+        case 'search-downloads':
+          p = self.searchDownloads(msg.params);
           break;
         case 'activate-tab':
           p = self.activateTab(msg.params);
@@ -360,13 +386,28 @@ const Background = function() {
    * @return {Promies} - Resolves to array of History objects matching query.
    */
   self.searchHistory = query => {
-    return browser.history
-      .search({ text: query, startTime: 0 })
-      .then(items => {
-        let history = items.filter(it => it.url).map(it => HistoryEntry(it));
+    return browser.history.search({ text: query, startTime: 0 }).then(items => {
+      let history = items.filter(it => it.url).map(it => HistoryEntry(it));
       console.debug(`${history.length} history item(s) for "${query}"`);
       return history;
     });
+  };
+
+  /**
+   * Handle "search-downloads" command.
+   * @param {string} query - Search query.
+   * @return {Promise} - Resolves to array of Download objects matching query.
+   */
+  self.searchDownloads = query => {
+    return browser.downloads
+      .search({
+        query: [query],
+        exists: true,
+      })
+      .then(items => {
+        console.debug(`${items.length} download(s) for "${query}"`);
+        return items.map(it => Download(it));
+      });
   };
 
   /**

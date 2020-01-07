@@ -32,6 +32,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2C1CC9A6-A0BD-47C3-8B39-372093A348B1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>56FBB613-EE25-4DE4-930D-C1F51B9235D8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>38D3C7F8-AD9B-4880-8502-5DE4D69EA265</key>
 		<array>
 			<dict>
@@ -200,6 +213,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>E3C926B1-9A80-48ED-9705-8C835D7FB18F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2C1CC9A6-A0BD-47C3-8B39-372093A348B1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>E51D9E39-F895-4FD6-B159-0CB29463CA21</key>
 		<array>
 			<dict>
@@ -316,53 +342,6 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading actions…</string>
-				<key>script</key>
-				<string>./alfred-firefox -query "$1" actions</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Filter/Run Actions</string>
-				<key>title</key>
-				<string>Actions</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>9AF41D0B-F6CB-4063-BF22-96F22182CFE3</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
@@ -430,6 +409,133 @@
 			<string>5A0372A7-7488-4146-B8CD-17B1834B2EF6</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading actions…</string>
+				<key>script</key>
+				<string>./alfred-firefox -query "$1" actions</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Filter/Run Actions</string>
+				<key>title</key>
+				<string>Actions</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>9AF41D0B-F6CB-4063-BF22-96F22182CFE3</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>58CBD6D3-C6D1-48CF-9A34-7EE5EBA5886B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>tab</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading tabs…</string>
+				<key>script</key>
+				<string>./alfred-firefox -query "$1" tabs</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Filter Firefox Tabs</string>
+				<key>title</key>
+				<string>Firefox Tabs</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B353C303-DA6D-4AFC-8F19-04BA6ABB1E27</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -611,86 +717,6 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>58CBD6D3-C6D1-48CF-9A34-7EE5EBA5886B</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>tab</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading tabs…</string>
-				<key>script</key>
-				<string>./alfred-firefox -query "$1" tabs</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Filter Firefox Tabs</string>
-				<key>title</key>
-				<string>Firefox Tabs</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>B353C303-DA6D-4AFC-8F19-04BA6ABB1E27</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -771,6 +797,86 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>E3C926B1-9A80-48ED-9705-8C835D7FB18F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>dl</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading downloads…</string>
+				<key>script</key>
+				<string>./alfred-firefox -query "$1" downloads</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search Firefox Downloads</string>
+				<key>title</key>
+				<string>Firefox Downloads</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>2C1CC9A6-A0BD-47C3-8B39-372093A348B1</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -834,25 +940,34 @@ variables={allvars}
 		<key>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</key>
 		<dict>
 			<key>xpos</key>
-			<integer>995</integer>
+			<integer>1055</integer>
 			<key>ypos</key>
-			<integer>250</integer>
+			<integer>420</integer>
+		</dict>
+		<key>2C1CC9A6-A0BD-47C3-8B39-372093A348B1</key>
+		<dict>
+			<key>note</key>
+			<string>Search downloads</string>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>715</integer>
 		</dict>
 		<key>38D3C7F8-AD9B-4880-8502-5DE4D69EA265</key>
 		<dict>
 			<key>note</key>
 			<string>Actions for current tab</string>
 			<key>xpos</key>
-			<integer>750</integer>
+			<integer>810</integer>
 			<key>ypos</key>
-			<integer>335</integer>
+			<integer>505</integer>
 		</dict>
 		<key>56FBB613-EE25-4DE4-930D-C1F51B9235D8</key>
 		<dict>
 			<key>xpos</key>
-			<integer>475</integer>
+			<integer>535</integer>
 			<key>ypos</key>
-			<integer>240</integer>
+			<integer>410</integer>
 		</dict>
 		<key>58CBD6D3-C6D1-48CF-9A34-7EE5EBA5886B</key>
 		<dict>
@@ -871,9 +986,9 @@ variables={allvars}
 		<key>7D1126FC-FAE3-40C1-A536-43C272DF9E69</key>
 		<dict>
 			<key>xpos</key>
-			<integer>565</integer>
+			<integer>625</integer>
 			<key>ypos</key>
-			<integer>335</integer>
+			<integer>505</integer>
 		</dict>
 		<key>83477ED1-950C-4E4D-9D22-CDEC701CA68D</key>
 		<dict>
@@ -882,7 +997,7 @@ variables={allvars}
 			<key>xpos</key>
 			<integer>210</integer>
 			<key>ypos</key>
-			<integer>715</integer>
+			<integer>880</integer>
 		</dict>
 		<key>93E61791-1520-4B4F-9257-C5B28A505058</key>
 		<dict>
@@ -903,9 +1018,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Filter Tab/URL Actions</string>
 			<key>xpos</key>
-			<integer>750</integer>
+			<integer>810</integer>
 			<key>ypos</key>
-			<integer>90</integer>
+			<integer>260</integer>
 		</dict>
 		<key>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</key>
 		<dict>
@@ -919,9 +1034,9 @@ variables={allvars}
 		<key>AE956921-0416-405F-B748-94C23CDB2774</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1085</integer>
+			<integer>1145</integer>
 			<key>ypos</key>
-			<integer>220</integer>
+			<integer>390</integer>
 		</dict>
 		<key>B353C303-DA6D-4AFC-8F19-04BA6ABB1E27</key>
 		<dict>
@@ -935,9 +1050,16 @@ variables={allvars}
 		<key>E2BDC50E-36DB-45DE-B40E-24BA116ADFE6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>580</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>230</integer>
+			<integer>400</integer>
+		</dict>
+		<key>E3C926B1-9A80-48ED-9705-8C835D7FB18F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>715</integer>
 		</dict>
 		<key>E51D9E39-F895-4FD6-B159-0CB29463CA21</key>
 		<dict>
