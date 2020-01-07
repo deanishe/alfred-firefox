@@ -141,6 +141,24 @@ var (
 		LongHelp:  wrap(`Show workflow status, info and options.`),
 		Exec:      runStatus,
 	}
+
+	// open file in default application
+	openCmd = &ffcli.Command{
+		Name:      "open",
+		Usage:     "alfred-firefox open <path>",
+		ShortHelp: "open file in default application",
+		LongHelp:  wrap(`Open file in default application.`),
+		Exec:      runOpen,
+	}
+
+	// reveal file in Finder
+	revealCmd = &ffcli.Command{
+		Name:      "reveal",
+		Usage:     "alfred-firefox reveal <path>",
+		ShortHelp: "reveal file in Finder",
+		LongHelp:  wrap(`Reveal file in Finder.`),
+		Exec:      runReveal,
+	}
 )
 
 func runOpenURL(_ []string) error {
@@ -472,13 +490,32 @@ func runDownloads(_ []string) error {
 			Subtitle(util.PrettyPath(dl.Path)).
 			Arg(dl.Path).
 			UID(dl.Path).
+			IsFile(true).
 			Icon(&aw.Icon{Value: dl.Path, Type: aw.IconTypeFileIcon}).
-			Valid(true)
+			Valid(true).
+			Var("CMD", "open").
+			NewModifier(aw.ModCmd).
+			Subtitle("Reveal in Finder").
+			Var("CMD", "reveal")
 	}
 
 	wf.WarnEmpty("Nothing Found", "Try a different query?")
 	wf.SendFeedback()
 	return nil
+}
+
+// open file in default application
+func runOpen(args []string) error {
+	path := args[0]
+	log.Printf("opening file %q ...", util.PrettyPath(path))
+	return exec.Command("/usr/bin/open", path).Run()
+}
+
+// reveal file in Finder
+func runReveal(args []string) error {
+	path := args[0]
+	log.Printf("revealing file %q in Finder ...", util.PrettyPath(path))
+	return exec.Command("/usr/bin/open", "-R", path).Run()
 }
 
 // run update check in background

@@ -5,7 +5,6 @@
 package main
 
 // TODO: implement setup (save native application manifest)
-// TODO: implement tab scripts (injectable JS)?
 // TODO: package extension
 
 import (
@@ -92,6 +91,8 @@ func init() {
 		currentTabCmd,
 		downloadsCmd,
 		historyCmd,
+		openCmd,
+		revealCmd,
 		runBookmarkletCmd,
 		serveCmd,
 		statusCmd,
