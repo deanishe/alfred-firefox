@@ -3,7 +3,10 @@
 
 package main
 
-import "net/rpc"
+import (
+	"log"
+	"net/rpc"
+)
 
 // RPC client used by workflow to execute extension actions.
 type rpcClient struct {
@@ -23,7 +26,8 @@ func newClient() (*rpcClient, error) {
 func mustClient() *rpcClient {
 	c, err := newClient()
 	if err != nil {
-		panic(err)
+		log.Printf("[ERROR] %v", err)
+		panic("Cannot Connect to Extension")
 	}
 	return c
 }

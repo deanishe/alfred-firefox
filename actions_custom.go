@@ -49,10 +49,7 @@ func (ca customAction) Add(it *aw.Item) {
 	case "tab":
 		m.Icon(iconTab).Var("CMD", "tab")
 	case "url":
-		m.Var("CMD", "url").Icon(iconURL)
-		if icon, ok := scriptIcons[ca.name]; ok {
-			m.Icon(icon)
-		}
+		m.Var("CMD", "url").Icon(actionIcon(ca.name, iconURL))
 	case "bookmarklet":
 		m.Var("CMD", "run-bookmarklet").Var("BOOKMARK", ca.id).
 			Icon(iconBookmarklet)

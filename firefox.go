@@ -88,7 +88,7 @@ func (f *firefox) run() {
 				return
 			}
 			if err != nil {
-				log.Printf("[error] read from stdin: %v", err)
+				log.Printf("[ERROR] read from stdin: %v", err)
 				return
 			}
 
@@ -99,7 +99,7 @@ func (f *firefox) run() {
 				return
 			}
 			if err != nil {
-				log.Printf("[error] read from stdin: %v", err)
+				log.Printf("[ERROR] read from stdin: %v", err)
 				return
 			}
 			// log.Printf("received %s", data)
@@ -141,7 +141,7 @@ func (f *firefox) run() {
 				ch <- r
 				delete(f.handlers, r.ID)
 			} else {
-				log.Printf("[error] no handler for message %q", r.ID)
+				log.Printf("[ERROR] no handler for message %q", r.ID)
 			}
 		}
 	}

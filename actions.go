@@ -18,16 +18,6 @@ import (
 var (
 	tabActions = map[string]tabAction{}
 	urlActions = map[string]urlAction{}
-
-	scriptIcons = map[string]*aw.Icon{}
-
-	imageExts = map[string]bool{
-		".png":  true,
-		".jpg":  true,
-		".jpeg": true,
-		".gif":  true,
-		".icns": true,
-	}
 )
 
 type tabAction interface {
@@ -90,11 +80,8 @@ func loadURLActions() error {
 		log.Printf("loaded URL action %q from %q", name, util.PrettyPath(path))
 		a := uAction{
 			name:   name,
-			icon:   iconURL,
+			icon:   actionIcon(name, iconURL),
 			script: path,
-		}
-		if icon, ok := scriptIcons[name]; ok {
-			a.icon = icon
 		}
 		urlActions[name] = a
 	}

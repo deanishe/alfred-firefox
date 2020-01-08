@@ -9,8 +9,11 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"flag"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -20,6 +23,7 @@ import (
 
 	aw "github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/update"
+	"github.com/deanishe/awgo/util"
 	"github.com/mitchellh/go-wordwrap"
 	"github.com/peterbourgon/ff"
 	"github.com/peterbourgon/ff/ffcli"
@@ -36,10 +40,20 @@ const (
 	repo      = "git.deanishe.net/deanishe/alfred-firefox-assistant"
 )
 
+// native application manifest
+var (
+	extensionID   = "alfredfirefox@deanishe.net"
+	extensionName = "net.deanishe.alfred.firefox"
+	manifestPath  = os.ExpandEnv("${HOME}/Library/Application Support/Mozilla/" +
+		"NativeMessagingHosts/" + extensionName + ".json")
+)
+
+// workflow variables
 var (
 	wf = aw.New(
 		aw.HelpURL(helpURL),
 		update.Gitea(repo),
+		aw.AddMagic(registerMagic{}),
 	)
 
 	// Filepaths
@@ -113,6 +127,11 @@ func run() {
 			panic(err)
 		}
 	}
+
+	if err := setup(false); err != nil {
+		panic(err)
+	}
+
 	if err := loadURLActions(); err != nil {
 		panic(err)
 	}
@@ -123,6 +142,59 @@ func run() {
 }
 
 func main() { wf.Run(run) }
+
+type registerMagic struct{}
+
+func (m registerMagic) Keyword() string { return "register" }
+func (m registerMagic) Description() string {
+	return "Re-register workflow with Firefox"
+}
+func (m registerMagic) RunText() string {
+	return "Registered. Re-open Firefox extension to connect."
+}
+func (m registerMagic) Run() error { return setup(true) }
+
+var _ aw.MagicAction = registerMagic{}
+
+func setup(force bool) error {
+	if !force && util.PathExists(manifestPath) {
+		return nil
+	}
+
+	path, err := filepath.Abs("./server.sh")
+	if err != nil {
+		return err
+	}
+	if path, err = filepath.EvalSymlinks(path); err != nil {
+		return err
+	}
+	path = filepath.Clean(path)
+
+	manifest := struct {
+		Name        string   `json:"name"`
+		Description string   `json:"description"`
+		Path        string   `json:"path"`
+		Type        string   `json:"type"`
+		Allowed     []string `json:"allowed_extensions"`
+	}{
+		Name:        extensionName,
+		Description: "Alfred plugin for Firefox",
+		Path:        path,
+		Type:        "stdio",
+		Allowed:     []string{extensionID},
+	}
+
+	data, err := json.MarshalIndent(manifest, "", "  ")
+	if err != nil {
+		return err
+	}
+	if err := ioutil.WriteFile(manifestPath, data, 0644); err != nil {
+		return err
+	}
+	log.Printf("wrote native app manifest to %q", util.PrettyPath(manifestPath))
+	log.Print("\n" + string(data))
+	return nil
+}
 
 var rxPara = regexp.MustCompile(`\n\n+`)
 

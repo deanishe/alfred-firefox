@@ -16,7 +16,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</key>
@@ -24,6 +24,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>AE956921-0416-405F-B748-94C23CDB2774</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>26D5BE1B-9DAB-4039-9C7E-D639974A2614</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -49,7 +62,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</string>
+				<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -153,7 +166,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</string>
+				<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -172,7 +185,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>B353C303-DA6D-4AFC-8F19-04BA6ABB1E27</key>
@@ -185,7 +198,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>E2BDC50E-36DB-45DE-B40E-24BA116ADFE6</key>
@@ -204,7 +217,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</string>
+				<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -236,7 +249,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 	</dict>
@@ -633,6 +646,14 @@ variables={allvars}
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>alfredfiltersresults</key>
@@ -902,7 +923,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string>Loading…</string>
 				<key>script</key>
-				<string>./firefox -query "$1" options</string>
+				<string>./alfred-firefox -query "$1" options</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -940,7 +961,14 @@ variables={allvars}
 		<key>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1055</integer>
+			<integer>1115</integer>
+			<key>ypos</key>
+			<integer>420</integer>
+		</dict>
+		<key>26D5BE1B-9DAB-4039-9C7E-D639974A2614</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1025</integer>
 			<key>ypos</key>
 			<integer>420</integer>
 		</dict>
@@ -1034,7 +1062,7 @@ variables={allvars}
 		<key>AE956921-0416-405F-B748-94C23CDB2774</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1145</integer>
+			<integer>1205</integer>
 			<key>ypos</key>
 			<integer>390</integer>
 		</dict>

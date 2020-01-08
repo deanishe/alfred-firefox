@@ -2,16 +2,14 @@
   "browser_action": {
     "browser_style": true,
     "default_title": "Alfred-Firefox",
-    "default_popup": "window.html",
+    "default_popup": "popup.html",
 
     "default_icon": {
-      "16": "icons/active.svg",
-      "32": "icons/active.svg",
-      "64": "icons/active.svg"
+      "32": "icons/bowler.svg"
     }
   },
 
-  "browser_specific_settings": {
+  "applications": {
     "gecko": {
       "id": "alfredfirefox@deanishe.net",
       "strict_min_version": "70.0"
@@ -33,8 +31,10 @@
   },
 
   "icons": {
-    "48": "icons/active.svg",
-    "96": "icons/active.svg"
+    "32": "icons/bowler-black.svg",
+    "48": "icons/bowler-black.svg",
+    "96": "icons/bowler-black.svg",
+    "128": "icons/bowler-black.svg"
   },
 
   "manifest_version": 2,

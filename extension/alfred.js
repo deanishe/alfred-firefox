@@ -6,36 +6,8 @@
  */
 const appName = 'net.deanishe.alfred.firefox';
 
-const iconConnected = 'icons/active.svg';
-const iconDisconnected = 'icons/inactive.svg';
-
-/**
- * Window object.
- * @param {windows.Window} - Native window object to create Window from.
- * @return {Object} - API Window object.
- */
-/*
-const Window = win => {
-  let obj = {};
-  win = win || {};
-
-  obj.id = win.id || 0;
-  obj.title = win.title || '';
-  obj.active = win.focused || false;
-  obj.tabs = [];
-  win.tabs.forEach(tab => {
-    let t = Tab(tab);
-    console.log(`[tabs] ${t}`);
-    obj.tabs.push(t);
-  });
-
-  obj.toString = function() {
-    return `#${this.id} "${this.title}", active=${this.active}, ${this.tabs.length} tab(s)`;
-  };
-
-  return obj;
-};
-*/
+const iconConnected = 'icons/bowler.svg';
+const iconDisconnected = 'icons/bowler-red.svg';
 
 /**
  * Tab object.
@@ -136,35 +108,65 @@ const Download = di => {
 const Background = function() {
   var self = this;
 
+  self.port = null,
+    self.connected = false;
+
+  self.onConnected = port => {
+    self.port = port;
+    port.onMessage.addListener(self.receive);
+    console.debug('connected to popup');
+  };
+
+  self.send = msg => {
+    self.port.postMessage(msg);
+    console.debug('sent message', msg);
+  };
+
+  self.receive = msg => {
+    console.debug('received message', msg);
+    if ('command' in msg) {
+      switch (msg.command) {
+        case 'status':
+          self.send({ status: self.connected ? 'connected' : 'disconnected' });
+          return;
+        case 'reconnect':
+          console.debug('reconnecting to native app ...');
+          self.connectNative();
+          return;
+      }
+    }
+  };
+
   self.nativePort = null;
 
   self.connectNative = () => {
-    let connected = false;
+    self.connected = false;
 
     let listener = payload => {
-      if (!connected) {
-        connected = true;
-        self.nativePort.onDisconnect.removeListener(self.connectFailed);
-        self.connected();
+      if (!self.connected) {
+        self.connected = true;
+        self.nativePort.onDisconnect.removeListener(self.connectNativeFailed);
+        self.onConnectedNative();
       }
       self.receiveNative(payload);
     };
 
     self.nativePort = browser.runtime.connectNative(appName);
     self.nativePort.onMessage.addListener(listener);
-    self.nativePort.onDisconnect.addListener(self.connectFailed);
+    self.nativePort.onDisconnect.addListener(self.connectNativeFailed);
   };
 
   /**
    * Callback for connection failure.
    * Logs an error message to the console.
    */
-  self.connectFailed = port => {
+  self.connectNativeFailed = port => {
     let msg = '';
     if (port.error) {
       msg = port.error.message;
     }
-    console.error(`connection failed: ${msg}`);
+    self.connected = false;
+    console.error(`native client connection failed: ${msg}`);
     browser.browserAction.setIcon({ path: iconDisconnected });
   };
 
@@ -172,7 +174,7 @@ const Background = function() {
    * Callback for successful connection to native application.
    * Logs a message to the console.
    */
-  self.connected = () => {
+  self.onConnectedNative = () => {
     console.log('connected to native client');
     browser.browserAction.setIcon({ path: iconConnected });
   };
@@ -282,33 +284,6 @@ const Background = function() {
       resolve('pong');
     });
   };
-
-  /**
-   * Handle "all-windows" command.
-   * @return {Promise} - Resolves to array of Window objects for all windows
-   * of type "normal".
-   */
-  // self.allWindows = () => {
-  //   return browser.windows
-  //     .getAll({ populate: true, windowTypes: ['normal'] })
-  //     .then(wins => {
-  //       return wins.map(w => Window(w));
-  //     });
-  // };
-
-  /**
-   * Handle "current-window" command.
-   * @return {Promise} - Resolves to Window for active window.
-   */
-  // self.currentWindow = () => {
-  //   return browser.windows
-  //     .getCurrent({ populate: true, windowTypes: ['normal'] })
-  //     .then(w => {
-  //       let win = Window(w);
-  //       console.log(`[current-window] ${win}`);
-  //       return win;
-  //     });
-  // };
 
   /**
    * Handle "all-tabs" command.
@@ -517,6 +492,7 @@ const Background = function() {
       });
   };
 
+  browser.runtime.onConnect.addListener(self.onConnected);
   self.connectNative();
   console.log(`started`);
 };

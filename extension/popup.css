@@ -1,0 +1,106 @@
+html>body {
+	color: #444;
+	margin: 0;
+	max-width: 350px;
+	padding: 0;
+}
+
+html > body > * {
+	padding-left: 24px;
+	padding-right: 24px;
+}
+
+header,
+footer {
+	margin: 0;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+header {
+	background-color: rgb(92, 31, 135);
+	padding-bottom: 16px;
+	padding-top: 16px;
+}
+
+footer {
+	color: #888;
+	font-size: 0.85em;
+	padding-bottom: 16px;
+	text-align: center;
+}
+
+h1 {
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	line-height: 32px;
+	margin: 0;
+}
+
+h1 > * {
+	display: inline-block;
+	margin: 0 6px;
+}
+
+ul {
+	margin: 0;
+	padding: 16px 0;
+	list-style: none;
+}
+
+li {
+	margin-left: 0;
+	margin-bottom: 8px;
+}
+
+hr {
+	border: 0;
+	height: 0;
+	border-top: 1px solid #ddd;
+	width: 100%;
+}
+
+#connected {
+	color: #090;
+}
+
+#disconnected {
+	color: #b00;
+}
+
+#reconnect {
+	font-weight: normal;
+	/* font-size: 1.2em; */
+	/* text-align: center; */
+}
+
+#reconnect a {
+	font-weight: bold;
+}
+
+#status {
+	background: #eee;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-weight: bold;
+	margin: 16px 0 0;
+	padding: 8px 16px;
+}
+
+#status .title {
+	display: inline-block;
+	margin-right: 4px;
+}
+
+#status .status {
+	display: none;
+}
+
+#status.connected #connected { display: inline-block; }
+#status.connected #disconnected { display: none; }
+#status.connected #reconnect { display: none; }
+#status.disconnected #connected { display: none; }
+#status.disconnected #disconnected { display: inline-block; }
+#status.disconnected #reconnect { display: block; }
+

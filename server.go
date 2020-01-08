@@ -119,7 +119,7 @@ func runServer(args []string) error {
 
 	var s string
 	if err := srv.Ping("", &s); err != nil {
-		log.Printf("[error] %v", err)
+		log.Printf("[ERROR] %v", err)
 	} else {
 		log.Printf("ping => %q", s)
 	}
@@ -128,7 +128,7 @@ func runServer(args []string) error {
 		var bookmarks []Bookmark
 		for _, q := range []string{"", "haze", "github", "p2p"} {
 			if err := srv.Bookmarks(q, &bookmarks); err != nil {
-				log.Printf("[error] %v", err)
+				log.Printf("[ERROR] %v", err)
 			} else {
 				log.Printf("bookmarks(%q) => %d result(s)", q, len(bookmarks))
 			}
@@ -136,7 +136,7 @@ func runServer(args []string) error {
 
 		var tabs []Tab
 		if err := srv.Tabs("", &tabs); err != nil {
-			log.Printf("[error] %v", err)
+			log.Printf("[ERROR] %v", err)
 		} else {
 			log.Printf("tabs => %d result(s)", len(tabs))
 		}

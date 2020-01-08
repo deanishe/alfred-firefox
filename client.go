@@ -161,13 +161,14 @@ var (
 	}
 )
 
-func runOpenURL(_ []string) error {
-	wf.Configure(aw.TextErrors(true))
-	log.Printf("opening URL %q ...", URL)
-	_, err := util.RunCmd(exec.Command("open", URL))
-	return err
-}
+// func runOpenURL(_ []string) error {
+// 	wf.Configure(aw.TextErrors(true))
+// 	log.Printf("opening URL %q ...", URL)
+// 	_, err := util.RunCmd(exec.Command("open", URL))
+// 	return err
+// }
 
+// search Firefox history
 func runHistory(_ []string) error {
 	checkForUpdate()
 	if len(query) < 3 {
@@ -208,6 +209,7 @@ func runHistory(_ []string) error {
 	return nil
 }
 
+// search Firefox bookmarks
 func runBookmarks(_ []string) error {
 	checkForUpdate()
 	if len(query) < 3 {
@@ -251,6 +253,7 @@ func runBookmarks(_ []string) error {
 	return nil
 }
 
+// search Firefox bookmarklets
 func runBookmarklets(_ []string) error {
 	checkForUpdate()
 	if len(query) < 3 {
@@ -284,6 +287,7 @@ func runBookmarklets(_ []string) error {
 	return nil
 }
 
+// execute a bookmarklet in a tab
 func runBookmarklet(_ []string) error {
 	wf.Configure(aw.TextErrors(true))
 	log.Printf("running bookmarklet %q in tab #%d ...", bookmarkID, tabID)
@@ -292,6 +296,7 @@ func runBookmarklet(_ []string) error {
 		RunBookmarklet(RunBookmarkletArg{BookmarkID: bookmarkID, TabID: tabID})
 }
 
+// filter open Firefox tabs
 func runTabs(_ []string) error {
 	log.Printf("fetching tabs for query %q ...", query)
 	checkForUpdate()
@@ -337,6 +342,7 @@ func runTabs(_ []string) error {
 	return nil
 }
 
+// execute a tab action on the given tab
 func runTabAction(_ []string) error {
 	wf.Configure(aw.TextErrors(true))
 	log.Printf("running action %q on tab #%d ...", action, tabID)
@@ -347,6 +353,7 @@ func runTabAction(_ []string) error {
 	return a.Run(tabID)
 }
 
+// run an action on a URL
 func runURLAction(_ []string) error {
 	wf.Configure(aw.TextErrors(true))
 	log.Printf("running action %q on URL %q ...", action, URL)
@@ -357,6 +364,7 @@ func runURLAction(_ []string) error {
 	return a.Run(URL)
 }
 
+// show actions for currently-active tab
 func runCurrentTab(_ []string) error {
 	tab, err := mustClient().CurrentTab()
 	if err != nil {
@@ -367,6 +375,7 @@ func runCurrentTab(_ []string) error {
 	return runActions([]string{})
 }
 
+// filter actions for tab or URL
 func runActions(_ []string) error {
 	if tabID != 0 {
 		for _, a := range tabActions {
@@ -388,7 +397,7 @@ func runActions(_ []string) error {
 			wf.NewItem(a.name).
 				UID(a.id).
 				Copytext("bml:"+a.id+","+a.name).
-				Icon(iconBookmarklet).
+				Icon(actionIcon(a.name, iconBookmarklet)).
 				Valid(true).
 				Var("CMD", "run-bookmarklet").
 				Var("BOOKMARK", a.id).
@@ -398,6 +407,9 @@ func runActions(_ []string) error {
 
 	if URL != "" {
 		for _, a := range urlActions {
+			if a.Name() == urlDefault {
+				continue
+			}
 			wf.NewItem(a.Name()).
 				UID(a.Name()).
 				Copytext(a.Name()).
@@ -431,6 +443,7 @@ func runUpdate(_ []string) error {
 	return nil
 }
 
+// show workflow status and options
 func runStatus(_ []string) error {
 	if c, err := newClient(); err != nil {
 		wf.NewItem("No Connection to Firefox").
@@ -447,6 +460,12 @@ func runStatus(_ []string) error {
 				Subtitle("Extension is installed and running")
 		}
 	}
+
+	wf.NewItem("Register Workflow with Firefox").
+		Subtitle("Use if you've updated or moved the workflow and it isn't working").
+		Autocomplete("workflow:register").
+		Icon(iconInstall).
+		Valid(false)
 
 	if wf.UpdateAvailable() {
 		wf.NewItem("Update Available").
