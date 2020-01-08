@@ -479,11 +479,30 @@ func runStatus(_ []string) error {
 			Valid(false)
 	}
 
+	dir := filepath.Join(wf.DataDir(), "scripts")
+	wf.NewItem("Open Scripts Directory").
+		Subtitle("Open custom scripts directory in Finder").
+		Arg(dir).
+		Valid(true).
+		Icon(iconScript).
+		Var("CMD", "url").
+		Var("ACTION", "Open in Default Application").
+		Var("URL", dir)
+
 	wf.NewItem("Documentation").
 		Subtitle("Open documentation in your browser").
 		Arg(helpURL).
 		Valid(true).
-		Icon(iconBookmark).
+		Icon(iconDocs).
+		Var("CMD", "url").
+		Var("ACTION", urlDefault).
+		Var("URL", docsURL)
+
+	wf.NewItem("Report Issue").
+		Subtitle("Open issue tracker in your browser").
+		Arg(helpURL).
+		Valid(true).
+		Icon(iconIssue).
 		Var("CMD", "url").
 		Var("ACTION", urlDefault).
 		Var("URL", helpURL)

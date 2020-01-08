@@ -35,9 +35,9 @@ const (
 )
 
 const (
-	helpURL   = "https://git.deanishe.net/deanishe/alfred-firefox-assistant/src/branch/master/README.md"
-	issuesURL = "https://git.deanishe.net/deanishe/alfred-firefox-assistant/issues"
-	repo      = "git.deanishe.net/deanishe/alfred-firefox-assistant"
+	helpURL = "https://github.com/deanishe/alfred-firefox/issues"
+	docsURL = "https://github.com/deanishe/alfred-firefox/blob/master/README.md"
+	repo    = "deanishe/alfred-firefox"
 )
 
 // native application manifest
@@ -52,7 +52,7 @@ var (
 var (
 	wf = aw.New(
 		aw.HelpURL(helpURL),
-		update.Gitea(repo),
+		update.GitHub(repo),
 		aw.AddMagic(registerMagic{}),
 	)
 
@@ -91,7 +91,7 @@ var (
 
 func init() {
 	rootFlags.StringVar(&URL, "url", "", "URL")
-	rootFlags.StringVar(&urlDefault, "url-default", "Open in Firefox",
+	rootFlags.StringVar(&urlDefault, "url-default", "Open in Default Application",
 		"Default URL action")
 	rootFlags.IntVar(&tabID, "tab", 0, "ID of tab")
 	rootFlags.StringVar(&bookmarkID, "bookmark", "", "ID of bookmark")
@@ -143,6 +143,7 @@ func run() {
 
 func main() { wf.Run(run) }
 
+// Magic Action to install native application manifest in Firefox
 type registerMagic struct{}
 
 func (m registerMagic) Keyword() string { return "register" }

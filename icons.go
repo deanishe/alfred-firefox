@@ -8,10 +8,13 @@ import aw "github.com/deanishe/awgo"
 var (
 	iconBookmark        = &aw.Icon{Value: "icons/bookmark.png"}
 	iconBookmarklet     = &aw.Icon{Value: "icons/bookmarklet.png"}
+	iconDocs            = &aw.Icon{Value: "icons/docs.png"}
 	iconError           = &aw.Icon{Value: "icons/error.png"}
 	iconHistory         = &aw.Icon{Value: "icons/history.png"}
+	iconIssue           = &aw.Icon{Value: "icons/issue.png"}
 	iconInstall         = &aw.Icon{Value: "icons/install.png"}
 	iconMore            = &aw.Icon{Value: "icons/more.png"}
+	iconScript          = &aw.Icon{Value: "icons/script.png"}
 	iconTab             = &aw.Icon{Value: "icons/tab.png"}
 	iconUpdateAvailable = &aw.Icon{Value: "icons/update-available.png"}
 	iconUpdateOK        = &aw.Icon{Value: "icons/update-ok.png"}

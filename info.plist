@@ -1106,7 +1106,7 @@ variables={allvars}
 		<key>TAB_GODOC</key>
 		<string>bml:uFJCA875bTEt,Open in GoDoc</string>
 		<key>URL_DEFAULT</key>
-		<string>Open in Firefox</string>
+		<string>Open in Default Application</string>
 		<key>URL_OPT</key>
 		<string>Open in Safari</string>
 	</dict>
