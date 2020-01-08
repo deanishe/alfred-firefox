@@ -93,6 +93,11 @@ func (c *rpcClient) CloseTabsOther(tabID int) error {
 	return c.client.Call("Firefox.CloseTabsOther", tabID, nil)
 }
 
+// OpenIncognito opens a URL in a new Incognito window.
+func (c *rpcClient) OpenIncognito(URL string) error {
+	return c.client.Call("Firefox.OpenIncognito", URL, nil)
+}
+
 // func (c *rpcClient) RunJS(script string) error {
 // 	return c.client.Call("Firefox.RunJS", script, nil)
 // }

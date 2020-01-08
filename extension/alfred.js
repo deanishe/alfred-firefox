@@ -235,6 +235,9 @@ const Background = function() {
         case 'run-bookmarklet':
           p = self.runBookmarklet(msg.params);
           break;
+        case 'open-incognito':
+          p = self.openIncognito(msg.params);
+          break;
         default:
           console.error(`unknown command: ${msg.command}`);
           self.sendError(msg.id, 'unknown command');
@@ -471,6 +474,16 @@ const Background = function() {
       if (params.tabId) browser.tabs.executeScript(params.tabId, { code: js });
       else browser.tabs.executeScript({ code: js });
     });
+  };
+
+  /**
+   * Handle "open-incognito" command.
+   * @param {string} url - URL to open in a new Incognito window.
+   * @return {Promise} - Promise that resolves to null.
+   */
+  self.openIncognito = url => {
+    console.debug(`open-incognito ${url}`);
+    return browser.windows.create({ incognito: true, url: url });
   };
 
   /**

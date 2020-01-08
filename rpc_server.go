@@ -179,6 +179,16 @@ func (s *rpcServer) Downloads(query string, downloads *[]Download) error {
 	return nil
 }
 
+// OpenIncognito opens URL in a new incognito window.
+func (s *rpcServer) OpenIncognito(URL string, _ *struct{}) error {
+	defer util.Timed(time.Now(), "open incognito")
+	var r responseNone
+	if err := s.ff.call("open-incognito", URL, &r); err != nil {
+		return err
+	}
+	return nil
+}
+
 // func (s *rpcServer) RunJS(script string, _ *struct{}) error {
 // 	defer util.Timed(time.Now(), "execute JS")
 // 	var r responseNone

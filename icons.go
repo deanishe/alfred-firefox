@@ -11,8 +11,9 @@ var (
 	iconDocs            = &aw.Icon{Value: "icons/docs.png"}
 	iconError           = &aw.Icon{Value: "icons/error.png"}
 	iconHistory         = &aw.Icon{Value: "icons/history.png"}
-	iconIssue           = &aw.Icon{Value: "icons/issue.png"}
+	iconIncognito       = &aw.Icon{Value: "icons/incognito.png"}
 	iconInstall         = &aw.Icon{Value: "icons/install.png"}
+	iconIssue           = &aw.Icon{Value: "icons/issue.png"}
 	iconMore            = &aw.Icon{Value: "icons/more.png"}
 	iconScript          = &aw.Icon{Value: "icons/script.png"}
 	iconTab             = &aw.Icon{Value: "icons/tab.png"}

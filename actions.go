@@ -41,6 +41,9 @@ func init() {
 	} {
 		tabActions[a.Name()] = a
 	}
+
+	a := openIncognito{}
+	urlActions[a.Name()] = a
 }
 
 func loadURLActions() error {
@@ -130,7 +133,17 @@ func (a uAction) Run(URL string) error {
 	return err
 }
 
+type openIncognito struct{}
+
+func (a openIncognito) Name() string   { return "Open in Incognito Window" }
+func (a openIncognito) Icon() *aw.Icon { return iconIncognito }
+func (a openIncognito) Run(URL string) error {
+	mustClient().OpenIncognito(URL)
+	return nil
+}
+
 var (
 	_ tabAction = (*tAction)(nil)
 	_ urlAction = (*uAction)(nil)
+	_ urlAction = openIncognito{}
 )
