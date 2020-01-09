@@ -27,6 +27,7 @@ var (
 		"info.plist",
 		"*.png",
 		"icons/*.png",
+		"LICENCE.txt",
 	}
 	info *build.Info
 )

@@ -1102,7 +1102,7 @@ variables={allvars}
 	<key>variables</key>
 	<dict>
 		<key>TAB_CTRL</key>
-		<string>bml:seoxED9MBuqi,Add to Pinboard</string>
+		<string>bml:yrdLTEE3tXtT,Add to Pinboard</string>
 		<key>TAB_GODOC</key>
 		<string>bml:uFJCA875bTEt,Open in GoDoc</string>
 		<key>URL_DEFAULT</key>
@@ -1112,7 +1112,6 @@ variables={allvars}
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
-		<string>TAB_CTRL</string>
 		<string>TAB_GODOC</string>
 	</array>
 	<key>version</key>

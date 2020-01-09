@@ -133,6 +133,7 @@ func (a uAction) Run(URL string) error {
 	return err
 }
 
+// URL action to open a URL in a new incognito window
 type openIncognito struct{}
 
 func (a openIncognito) Name() string   { return "Open in Incognito Window" }

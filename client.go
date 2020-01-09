@@ -325,7 +325,7 @@ func runTabs(_ []string) error {
 			Var("TITLE", t.Title)
 
 		it.NewModifier(aw.ModCmd).
-			Subtitle("Other Actions").
+			Subtitle("Other Actions…").
 			Arg("").
 			Icon(iconMore).
 			Var("CMD", "actions")

@@ -33,7 +33,7 @@ type command struct {
 }
 
 func (c command) String() string {
-	return fmt.Sprintf("command(%s) - %q", c.ID, c.Name)
+	return fmt.Sprintf("command #%s - %q", c.ID, c.Name)
 }
 
 // encode command into extension STDIO format.
@@ -48,19 +48,21 @@ func (c command) encode() ([]byte, error) {
 	return b, nil
 }
 
-// response is a generic response from the browser.
+// response is a generic response from the browser extension.
+// The full JSON response from the extension is contained in data to
+// be unmarshalled by the receiver.
 type response struct {
-	ID   string `json:"id"`
-	Err  string `json:"error"`
-	data []byte
-	err  error
+	ID   string `json:"id"`    // ID of the command this is a response to
+	Err  string `json:"error"` // error message returned by extension
+	data []byte // full JSON response
+	err  error  // error encountered decoding response
 }
 
 func (r response) String() string {
-	return fmt.Sprintf("response(%s) - %d bytes", r.ID, len(r.data))
+	return fmt.Sprintf("response #%s - %d bytes", r.ID, len(r.data))
 }
 
-// firefox communicates with the browser (extension).
+// firefox communicates with the browser extension via STDIN/STOUT.
 type firefox struct {
 	commands  chan command
 	responses chan response
