@@ -328,7 +328,7 @@
 				<key>subtext</key>
 				<string>Filter/Run Actions on Current Firefox Tab</string>
 				<key>title</key>
-				<string>Current Firefox Tab</string>
+				<string>Current Tab Actions</string>
 				<key>type</key>
 				<integer>5</integer>
 				<key>withspace</key>
