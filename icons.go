@@ -6,6 +6,7 @@ package main
 import aw "github.com/deanishe/awgo"
 
 var (
+	iconAddon           = &aw.Icon{Value: "icons/addon.png"}
 	iconBookmark        = &aw.Icon{Value: "icons/bookmark.png"}
 	iconBookmarklet     = &aw.Icon{Value: "icons/bookmarklet.png"}
 	iconDocs            = &aw.Icon{Value: "icons/docs.png"}

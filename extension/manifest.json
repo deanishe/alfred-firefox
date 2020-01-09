@@ -1,7 +1,7 @@
 {
   "browser_action": {
     "browser_style": true,
-    "default_title": "Alfred-Firefox",
+    "default_title": "Alfred",
     "default_popup": "popup.html",
 
     "default_icon": {
@@ -38,7 +38,7 @@
   },
 
   "manifest_version": 2,
-  "name": "Alfred-Firefox",
+  "name": "Alfred Integration",
   "version": "1.0",
   "description": "Integrates Firefox with Alfred."
 }

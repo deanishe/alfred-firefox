@@ -28,6 +28,7 @@ var (
 		"*.png",
 		"icons/*.png",
 		"LICENCE.txt",
+		"README.md",
 	}
 	info *build.Info
 )
@@ -41,7 +42,8 @@ func init() {
 
 // Aliases are aliases for Mage commands.
 var Aliases = map[string]interface{}{
-	"b": Build,
+	"b":   Build,
+	"ext": Extension,
 }
 
 // Default target to run when none is specified
@@ -51,7 +53,19 @@ var Aliases = map[string]interface{}{
 // Dist build & export workflow
 func Dist() {
 	mg.Deps(cleanBuild, Deps)
-	mg.SerialDeps(Build, Export)
+	mg.SerialDeps(Build, Export, Extension)
+}
+
+// Extension build browser extension in dist directory
+func Extension() error {
+	if err := sh.Run("mkdir", "-p", distDir); err != nil {
+		return err
+	}
+	if err := sh.Rm("dist/alfred-firefox-assistant.xpi"); err != nil {
+		return err
+	}
+	return sh.Run("zsh", "-c",
+		`cd extension && zip -r ../dist/alfred-firefox-assistant.xpi * -x '*.DS_Store'`)
 }
 
 // Export compile build directory into workflow in dist directory

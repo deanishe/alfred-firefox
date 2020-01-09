@@ -205,6 +205,16 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>9AF41D0B-F6CB-4063-BF22-96F22182CFE3</string>
 				<key>modifiers</key>
 				<integer>0</integer>
@@ -212,16 +222,6 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>65CCCA7A-4865-4AA0-ABB3-19B13996FC3E</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -291,6 +291,88 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>96C33C0A-5D89-4903-97AC-E430858902FA</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading actions…</string>
+				<key>script</key>
+				<string>./alfred-firefox -query "$1" current-tab</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Filter/Run Actions on Current Firefox Tab</string>
+				<key>title</key>
+				<string>Current Firefox Tab</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>38D3C7F8-AD9B-4880-8502-5DE4D69EA265</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>1835008</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>org.mozilla.firefox</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>7D1126FC-FAE3-40C1-A536-43C272DF9E69</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -422,53 +504,6 @@
 			<string>5A0372A7-7488-4146-B8CD-17B1834B2EF6</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading actions…</string>
-				<key>script</key>
-				<string>./alfred-firefox -query "$1" actions</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Filter/Run Actions</string>
-				<key>title</key>
-				<string>Actions</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>9AF41D0B-F6CB-4063-BF22-96F22182CFE3</string>
-			<key>version</key>
-			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -679,15 +714,15 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string>Loading actions…</string>
 				<key>script</key>
-				<string>./alfred-firefox -query "$1" current-tab</string>
+				<string>./alfred-firefox -query "$1" actions</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Filter/Run Actions on Current Firefox Tab</string>
+				<string>Filter/Run Actions</string>
 				<key>title</key>
-				<string>Current Firefox Tab</string>
+				<string>Actions</string>
 				<key>type</key>
 				<integer>5</integer>
 				<key>withspace</key>
@@ -696,44 +731,9 @@ variables={allvars}
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>38D3C7F8-AD9B-4880-8502-5DE4D69EA265</string>
+			<string>9AF41D0B-F6CB-4063-BF22-96F22182CFE3</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>17</integer>
-				<key>hotmod</key>
-				<integer>1835008</integer>
-				<key>hotstring</key>
-				<string>T</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedApps</key>
-				<array>
-					<string>org.mozilla.firefox</string>
-				</array>
-				<key>relatedAppsMode</key>
-				<integer>1</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>7D1126FC-FAE3-40C1-A536-43C272DF9E69</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -946,7 +946,19 @@ variables={allvars}
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Firefox Assistant
+=================
+
+Search your Firefox bookmarks, history and tabs.
+
+This workflow requires the corresponding Firefox extension to be installed:
+
+https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/
+
+
+Please see the online docs for more information:
+
+https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 	<key>uidata</key>
 	<dict>
 		<key>01563DAF-B949-4BE5-A856-1C32ABFA03E9</key>
@@ -986,9 +998,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Actions for current tab</string>
 			<key>xpos</key>
-			<integer>810</integer>
+			<integer>640</integer>
 			<key>ypos</key>
-			<integer>505</integer>
+			<integer>40</integer>
 		</dict>
 		<key>56FBB613-EE25-4DE4-930D-C1F51B9235D8</key>
 		<dict>
@@ -1013,10 +1025,14 @@ variables={allvars}
 		</dict>
 		<key>7D1126FC-FAE3-40C1-A536-43C272DF9E69</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>note</key>
+			<string>Don't forget to set this Hotkey!</string>
 			<key>xpos</key>
-			<integer>625</integer>
+			<integer>455</integer>
 			<key>ypos</key>
-			<integer>505</integer>
+			<integer>40</integer>
 		</dict>
 		<key>83477ED1-950C-4E4D-9D22-CDEC701CA68D</key>
 		<dict>
@@ -1046,9 +1062,9 @@ variables={allvars}
 			<key>note</key>
 			<string>Filter Tab/URL Actions</string>
 			<key>xpos</key>
-			<integer>810</integer>
+			<integer>815</integer>
 			<key>ypos</key>
-			<integer>260</integer>
+			<integer>495</integer>
 		</dict>
 		<key>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</key>
 		<dict>
@@ -1102,7 +1118,7 @@ variables={allvars}
 	<key>variables</key>
 	<dict>
 		<key>TAB_CTRL</key>
-		<string>bml:yrdLTEE3tXtT,Add to Pinboard</string>
+		<string>bml:seoxED9MBuqi,Add to Pinboard</string>
 		<key>TAB_GODOC</key>
 		<string>bml:uFJCA875bTEt,Open in GoDoc</string>
 		<key>URL_DEFAULT</key>
@@ -1112,11 +1128,12 @@ variables={allvars}
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
+		<string>TAB_CTRL</string>
 		<string>TAB_GODOC</string>
 	</array>
 	<key>version</key>
-	<string>0.0.1</string>
+	<string>0.1.0</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/deanishe/alfred-firefox</string>
 </dict>
 </plist>

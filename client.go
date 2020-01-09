@@ -467,6 +467,15 @@ func runStatus(_ []string) error {
 		Icon(iconInstall).
 		Valid(false)
 
+	wf.NewItem("Install Firefox Extension").
+		Subtitle("Get the Firefox extension to integrate this workflow with Firefox").
+		Arg(addonURL).
+		Valid(true).
+		Icon(iconAddon).
+		Var("CMD", "url").
+		Var("ACTION", "Open in Firefox").
+		Var("URL", addonURL)
+
 	if wf.UpdateAvailable() {
 		wf.NewItem("Update Available").
 			Subtitle("↩ or ⇥ to install new version").

@@ -44,4 +44,4 @@ At this point, you should be able to search Firefox's bookmarks, history, downlo
 [^ Documentation index](index.md).
 
 [workflow]: https://github.com/deanishe/alfred-firefox/releases/latest
-[addon]: https://blah.com
+[addon]: https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/

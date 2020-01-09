@@ -35,9 +35,10 @@ const (
 )
 
 const (
-	helpURL = "https://github.com/deanishe/alfred-firefox/issues"
-	docsURL = "https://github.com/deanishe/alfred-firefox/blob/master/README.md"
-	repo    = "deanishe/alfred-firefox"
+	helpURL  = "https://github.com/deanishe/alfred-firefox/issues"
+	docsURL  = "https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md"
+	addonURL = "https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/"
+	repo     = "deanishe/alfred-firefox"
 )
 
 // native application manifest
