@@ -26,6 +26,7 @@ var (
 	assetPatterns = []string{
 		"info.plist",
 		"*.png",
+		"scripts/*",
 		"icons/*.png",
 		"LICENCE.txt",
 		"README.md",

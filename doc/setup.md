@@ -39,6 +39,16 @@ Now you need to install the workflow, run it, and then click on the extension's 
 At this point, you should be able to search Firefox's bookmarks, history, downloads and tabs from Alfred.
 
 
+### Don't forget!
+
+1. You should set a Hotkey for the "Current Tab Actions" Script Filter to get quick access to actions for the active tab.
+
+  ![Current Tab actions in Alfred Preferences](current-tab-actions.png)
+
+2. You have to allow the workflow to run in private windows to use the "Open in Incognito Window" action. To do this, go to `about:addons` and click the workflow's "Manage" button. Then select "Run in Private Windows: Allow".
+
+  ![Manage addon button](manage-addon.png)
+
 ---
 
 [^ Documentation index](index.md).

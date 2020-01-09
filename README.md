@@ -15,6 +15,8 @@ Installation
 
 1. Download and install the [latest version of the workflow][workflow]
 2. Install [the Firefox extension][addon]
+3. Run the workflow
+4. Click extension icon in Firefox to connect
 
 See [Setup][setup] for more details.
 
