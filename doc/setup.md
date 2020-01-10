@@ -15,6 +15,13 @@ Installation
 2. Run `ffass` > `Install Firefox Extension` in Alfred to install the [Firefox extension][addon].
 
 
+### Catalina ###
+
+If you're running Catalina, it will likely gripe about the `alfred-firefox` binary being unsigned and refuse to run it.
+
+[See here for instructions for how to fix it][catalina].
+
+
 Setup
 -----
 
@@ -53,3 +60,4 @@ At this point, you should be able to search Firefox's bookmarks, history, downlo
 
 [workflow]: https://github.com/deanishe/alfred-firefox/releases/latest
 [addon]: https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/
+[catalina]: https://github.com/deanishe/awgo/wiki/Catalina
