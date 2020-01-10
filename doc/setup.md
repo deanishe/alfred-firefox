@@ -1,26 +1,24 @@
 Setup
 =====
 
-Unfortunately, this workflow requires a relatively complex setup :(
+Unfortunately, this workflow requires a slightly complex setup :(
 
-Due to Firefox's preposterous lack of support for AppleScript, it's not possible for external programs to directly interact with Firefox in any non-trivial way.
+Due to Firefox's preposterous lack of support for AppleScript, the workflow needs to install a browser extension to communicate with Firefox.
 
-As a result, in addition to the workflow, you must also install the corresponding [browser extension][addon] which enables communication between Firefox and the workflow.
-
-Setup is *slightly* easier if you install (and run) [the workflow][workflow] first, and then the [browser extension][addon].
+Setup is easier if you install [the workflow][workflow] first, and then the [browser extension][addon].
 
 
 Installation
 ------------
 
 1. Download and install the workflow from [GitHub][workflow]
-2. Download and install the Firefox extension from [blah][addon]
+2. Run `ffass` > `Install Firefox Extension` in Alfred to install the [Firefox extension][addon].
 
 
 Setup
 -----
 
-When you first run the workflow, it will install the native-application manifest that tells Firefox where to find the workflow. Without this, the Firefox extension won't work. At this point, you'll probaby see the following error, but this is expected:
+If you install and run the workflow first, everything should be set up for the extension to work correctly. At this point, you may see the following error, but this is expected:
 
 ![Workflow cannot-connect message](workflow-error.png)
 
@@ -45,7 +43,7 @@ At this point, you should be able to search Firefox's bookmarks, history, downlo
 
   ![Current Tab actions in Alfred Preferences](current-tab-actions.png)
 
-2. You have to allow the workflow to run in private windows to use the "Open in Incognito Window" action. To do this, go to `about:addons` and click the workflow's "Manage" button. Then select "Run in Private Windows: Allow".
+2. You have to allow the workflow to run in private windows to use the "Open in Incognito Window" action. If you didn't allow this on installation, you can grant the permission later by going to `about:addons` and clicking the workflow's "Manage" button. Then select "Run in Private Windows: Allow".
 
   ![Manage addon button](manage-addon.png)
 
