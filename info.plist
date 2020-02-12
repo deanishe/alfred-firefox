@@ -1132,7 +1132,7 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 		<string>TAB_GODOC</string>
 	</array>
 	<key>version</key>
-	<string>0.1.0</string>
+	<string>0.1.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-firefox</string>
 </dict>
