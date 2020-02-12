@@ -190,6 +190,8 @@ func setup(force bool) error {
 	if err != nil {
 		return err
 	}
+
+	util.MustExist(filepath.Dir(manifestPath))
 	if err := ioutil.WriteFile(manifestPath, data, 0644); err != nil {
 		return err
 	}
