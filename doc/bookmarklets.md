@@ -30,7 +30,7 @@ You can also add bookmarklets to the `Other Actions…` list without assigning t
 
 ---
 
-[^ Documentation index](index.md).
+[^ Documentation index](index.md)
 
 
 [config-sheet]: https://www.alfredapp.com/help/workflows/advanced/variables/#environment

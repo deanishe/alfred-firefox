@@ -23,13 +23,13 @@ The workflow has the following keywords:
   - `⌘↩` — Reveal downloaded file in Finder
   - `<your hotkey here>` — Show tab actions for active tab. You must assign your own Hotkey to use this very useful function.
 - `ffass [<query>]` — Workflow status & setup
-  - "Connected to Firefox" / "No Connection to Firefox" — Whether workflow can connect to Firefox
-  - "Register Workflow with Firefox" — Install native app manifest so Firefox knows where to find the workflow. This should only be necessary if you've moved the workflow.
-  - "Install Firefox Extension" — Get the Firefox extension for this workflow.
-  - "Workflow is Up to Date" / "Update Available" — Whether a newer version of the workflow is available.
-  - "Open Scripts Directory" — Open the custom scripts directory. You can add your own URL actions and/or icons here. See [Scripts](scripts.md) for details.
-  - "Documentation" — Open these help pages in your browser.
-  - "Report Issue" — Open the workflow's issue tracker in your browser.
+  - `Connected to Firefox` / `No Connection to Firefox` — Whether workflow can connect to Firefox
+  - `Register Workflow with Firefox` — Install native app manifest so Firefox knows where to find the workflow. This should only be necessary if you've moved the workflow.
+  - `Install Firefox Extension` — Get the Firefox extension for this workflow.
+  - `Workflow is Up to Date` / `Update Available` — Whether a newer version of the workflow is available.
+  - `Open Scripts Directory` — Open the custom scripts directory. You can add your own URL actions and/or icons here. See [Scripts](scripts.md) for details.
+  - `Documentation` — Open these help pages in your browser.
+  - `Report Issue` — Open the workflow's issue tracker in your browser.
 
 
 See [Scripts](scripts.md) for more information on assigning custom hotkeys to URL actions and adding your own actions and icons.
@@ -38,5 +38,5 @@ See [Bookmarklets](bookmarklets.md) for more information on assigning custom hot
 
 ---
 
-[^ Documentation index](index.md).
+[^ Documentation index](index.md)
 

@@ -39,6 +39,6 @@ If none of that helps, please file an issue on [the workflow's issue tracker][is
 
 ---
 
-[^ Documentation index](index.md).
+[^ Documentation index](index.md)
 
 [issues]: https://github.com/deanishe/alfred-firefox/issues

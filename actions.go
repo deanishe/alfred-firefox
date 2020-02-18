@@ -129,8 +129,16 @@ type uAction struct {
 func (a uAction) Name() string   { return a.name }
 func (a uAction) Icon() *aw.Icon { return a.icon }
 func (a uAction) Run(URL string) error {
-	_, err := util.Run(a.script, URL)
-	return err
+	data, err := util.Run(a.script, URL)
+	if err != nil {
+		return err
+	}
+	s := string(data)
+	if s != "" {
+		log.Print(util.Pad(fmt.Sprintf(" output: %q ", a.name), "-", 50))
+		log.Print(s)
+	}
+	return nil
 }
 
 // URL action to open a URL in a new incognito window

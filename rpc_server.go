@@ -4,6 +4,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"net"
@@ -54,6 +55,9 @@ func (s *rpcServer) Ping(_ string, result *string) error {
 	if err := s.ff.call("ping", nil, &r); err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	*result = r.String
 	return nil
 }
@@ -75,6 +79,9 @@ func (s *rpcServer) Tabs(_ string, tabs *[]Tab) error {
 	if err := s.ff.call("all-tabs", nil, &r); err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	*tabs = r.Tabs
 	return nil
 }
@@ -86,19 +93,41 @@ func (s *rpcServer) ActivateTab(tabID int, _ *struct{}) error {
 	if err := s.ff.call("activate-tab", tabID, &r); err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	return nil
 }
 
-// CurrentTab returns the currently-active tab.
-func (s *rpcServer) CurrentTab(_ string, tab *Tab) error {
-	defer util.Timed(time.Now(), "get current tab")
+// Tab returns the specified tab. If tabID is 0, returns the active tab.
+func (s *rpcServer) Tab(tabID int, tab *Tab) error {
+	defer util.Timed(time.Now(), "get tab")
 	var r responseTab
-	if err := s.ff.call("current-tab", nil, &r); err != nil {
+	if err := s.ff.call("tab", tabID, &r); err != nil {
 		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
 	}
 	*tab = r.Tab
 	return nil
 }
+
+/*
+// CurrentTab returns the currently-active tab.
+func (s *rpcServer) CurrentTab(_ string, tab *Tab) error {
+	defer util.Timed(time.Now(), "get current tab")
+	var r responseTab
+	if err := s.ff.call("tab", 0, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	*tab = r.Tab
+	return nil
+}
+*/
 
 // CloseTabsLeft closes tabs to the left of specified tab.
 func (s *rpcServer) CloseTabsLeft(tabID int, _ *struct{}) error {
@@ -106,6 +135,9 @@ func (s *rpcServer) CloseTabsLeft(tabID int, _ *struct{}) error {
 	var r responseNone
 	if err := s.ff.call("close-tabs-left", tabID, &r); err != nil {
 		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
 	}
 	return nil
 }
@@ -117,6 +149,9 @@ func (s *rpcServer) CloseTabsRight(tabID int, _ *struct{}) error {
 	if err := s.ff.call("close-tabs-right", tabID, &r); err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	return nil
 }
 
@@ -126,6 +161,9 @@ func (s *rpcServer) CloseTabsOther(tabID int, _ *struct{}) error {
 	var r responseNone
 	if err := s.ff.call("close-tabs-other", tabID, &r); err != nil {
 		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
 	}
 	return nil
 }
@@ -145,6 +183,9 @@ func (s *rpcServer) Bookmarks(query string, bookmarks *[]Bookmark) error {
 	if err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	*bookmarks = r.Bookmarks
 	return nil
 }
@@ -159,6 +200,9 @@ func (s *rpcServer) History(query string, history *[]History) error {
 	err = s.ff.call("search-history", query, &r)
 	if err != nil {
 		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
 	}
 	*history = r.Entries
 	return nil
@@ -175,6 +219,9 @@ func (s *rpcServer) Downloads(query string, downloads *[]Download) error {
 	if err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	*downloads = r.Downloads
 	return nil
 }
@@ -186,20 +233,36 @@ func (s *rpcServer) OpenIncognito(URL string, _ *struct{}) error {
 	if err := s.ff.call("open-incognito", URL, &r); err != nil {
 		return err
 	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
 	return nil
 }
 
-// func (s *rpcServer) RunJS(script string, _ *struct{}) error {
-// 	defer util.Timed(time.Now(), "execute JS")
-// 	var r responseNone
-// 	if err := s.ff.call("execute-js", script, &r); err != nil {
-// 		return err
-// 	}
-// 	return nil
-// }
+// RunJSArg is the arguments required for RunJS call. TabID may be 0, in which
+// case the JavaScript is executed in the active tab.
+type RunJSArg struct {
+	TabID int    `json:"tabId"`
+	JS    string `json:"js"`
+}
 
-// arguments required for RunBookmarklet call. TabID may be 0, in which
-// case the bookmarklet is executed in the active tab.
+// RunJS executes JavaScript in the specified tab. If tabID is 0, the
+// script is executed in the current tab.
+func (s *rpcServer) RunJS(arg RunJSArg, JSON *string) error {
+	defer util.Timed(time.Now(), "execute JS")
+	var r responseString
+	if err := s.ff.call("execute-js", arg, &r); err != nil {
+		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
+	}
+	*JSON = r.String
+	return nil
+}
+
+// RunBookmarkletArg is the arguments required for RunBookmarklet call.
+// TabID may be 0, in which case the bookmarklet is executed in the active tab.
 type RunBookmarkletArg struct {
 	TabID      int    `json:"tabId"`
 	BookmarkID string `json:"bookmarkId"`
@@ -211,6 +274,9 @@ func (s *rpcServer) RunBookmarklet(arg RunBookmarkletArg, _ *struct{}) error {
 	var r responseNone
 	if err := s.ff.call("run-bookmarklet", arg, &r); err != nil {
 		return err
+	}
+	if r.Error != "" {
+		return errors.New(r.Error)
 	}
 	return nil
 }
@@ -226,6 +292,7 @@ func (s *rpcServer) stop() error {
 
 type responseString struct {
 	String string `json:"payload"`
+	Error  string `json:"error"`
 }
 
 // type responseWindows struct {
@@ -233,31 +300,40 @@ type responseString struct {
 // }
 
 type responseTabs struct {
-	Tabs []Tab `json:"payload"`
+	Tabs  []Tab  `json:"payload"`
+	Error string `json:"error"`
 }
 
 type responseTab struct {
-	Tab Tab `json:"payload"`
+	Tab   Tab    `json:"payload"`
+	Error string `json:"error"`
 }
 
 type responseHistory struct {
 	Entries []History `json:"payload"`
+	Error   string    `json:"error"`
 }
 
 type responseTabCurrent struct {
-	Tab Tab `json:"payload"`
+	Tab   Tab    `json:"payload"`
+	Error string `json:"error"`
 }
 
 type responseBookmarks struct {
 	Bookmarks []Bookmark `json:"payload"`
+	Error     string     `json:"error"`
 }
 
 type responseDownload struct {
 	Downloads []Download `json:"payload"`
+	Error     string     `json:"error"`
 }
 
 type responseBool struct {
-	OK bool `json:"payload"`
+	OK    bool   `json:"payload"`
+	Error string `json:"error"`
 }
 
-type responseNone struct{}
+type responseNone struct {
+	Error string `json:"error"`
+}

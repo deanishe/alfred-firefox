@@ -8,11 +8,20 @@ Due to Firefox's preposterous lack of support for AppleScript, the workflow need
 Setup is easier if you install [the workflow][workflow] first, and then the [browser extension][addon].
 
 
+<!-- vim-markdown-toc GFM -->
+
+* [Installation](#installation)
+  * [Catalina](#catalina)
+* [Setup](#setup)
+  * [Don't forget!](#dont-forget)
+
+<!-- vim-markdown-toc -->
+
 Installation
 ------------
 
 1. Download and install the workflow from [GitHub][workflow]
-2. Run `ffass` > `Install Firefox Extension` in Alfred to install the [Firefox extension][addon].
+2. Run `ffass` in Alfred and choose `Install Firefox Extension` to install the [Firefox extension][addon].
 
 
 ### Catalina ###
@@ -56,7 +65,7 @@ At this point, you should be able to search Firefox's bookmarks, history, downlo
 
 ---
 
-[^ Documentation index](index.md).
+[^ Documentation index](index.md)
 
 [workflow]: https://github.com/deanishe/alfred-firefox/releases/latest
 [addon]: https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/

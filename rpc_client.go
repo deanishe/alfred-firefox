@@ -66,12 +66,21 @@ func (c *rpcClient) Tabs() ([]Tab, error) {
 	return tabs, err
 }
 
+// Tab returns the specified tab. If tabID is 0, returns the active tab.
+func (c *rpcClient) Tab(tabID int) (Tab, error) {
+	var tab Tab
+	err := c.client.Call("Firefox.Tab", tabID, &tab)
+	return tab, err
+}
+
+/*
 // CurrentTab returns the currently-active tab.
 func (c *rpcClient) CurrentTab() (Tab, error) {
 	var tab Tab
 	err := c.client.Call("Firefox.CurrentTab", "", &tab)
 	return tab, err
 }
+*/
 
 // ActivateTab brings the specified tab to the front.
 func (c *rpcClient) ActivateTab(tabID int) error {
@@ -98,9 +107,13 @@ func (c *rpcClient) OpenIncognito(URL string) error {
 	return c.client.Call("Firefox.OpenIncognito", URL, nil)
 }
 
-// func (c *rpcClient) RunJS(script string) error {
-// 	return c.client.Call("Firefox.RunJS", script, nil)
-// }
+// RunJS executes JavaScript in the specified tab. If tabID is 0, the
+// script is executed in the current tab.
+func (c *rpcClient) RunJS(arg RunJSArg) (string, error) {
+	var s string
+	err := c.client.Call("Firefox.RunJS", arg, &s)
+	return s, err
+}
 
 // RunBookmarklet executes a given bookmarklet in a given tab.
 func (c *rpcClient) RunBookmarklet(arg RunBookmarkletArg) error {

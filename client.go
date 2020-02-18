@@ -4,6 +4,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -94,10 +95,22 @@ var (
 		Exec:      runCurrentTab,
 	}
 
+	infoFlags = flag.NewFlagSet("tab-info", flag.ExitOnError)
+	shellVars bool // export tab info as shell variables
+	// export info for current tab
+	currentTabInfoCmd = &ffcli.Command{
+		Name:      "tab-info",
+		Usage:     "alfred-firefox tab-info [-shell]",
+		ShortHelp: "export current tab info",
+		LongHelp:  wrap(`Export current tab info as variables`),
+		FlagSet:   infoFlags,
+		Exec:      runCurrentTabInfo,
+	}
+
 	// run a tab/URL action for the specified tab
 	tabCmd = &ffcli.Command{
 		Name:      "tab",
-		Usage:     "alfred-firefox -tab <id> -action <name> tab",
+		Usage:     "alfred-firefox [-tab <id>] -action <name> tab",
 		ShortHelp: "execute tab action",
 		LongHelp: wrap(`
 			Execute specified action on tab. Both URL and tab actions
@@ -106,10 +119,21 @@ var (
 		Exec: runTabAction,
 	}
 
+	// inject JS into the specified tab
+	injectCmd = &ffcli.Command{
+		Name:      "inject",
+		Usage:     "alfred-firefox [-tab <id>] inject <script>",
+		ShortHelp: "inject JavaScript into tab",
+		LongHelp: wrap(`
+			Execute JavaScript in specifed tab and return result as JSON.
+			`),
+		Exec: runInject,
+	}
+
 	// run action for URL
 	urlCmd = &ffcli.Command{
 		Name:      "url",
-		Usage:     "alfred-firefox -url <url> -action <name> url",
+		Usage:     "alfred-firefox [-url <url>] -action <name> url",
 		ShortHelp: "execute URL action",
 		LongHelp:  wrap(`Execute specified action on URL`),
 		Exec:      runURLAction,
@@ -160,6 +184,10 @@ var (
 		Exec:      runReveal,
 	}
 )
+
+func init() {
+	infoFlags.BoolVar(&shellVars, "shell", false, "export shell variables")
+}
 
 // func runOpenURL(_ []string) error {
 // 	wf.Configure(aw.TextErrors(true))
@@ -342,20 +370,35 @@ func runTabs(_ []string) error {
 	return nil
 }
 
-// execute a tab action on the given tab
+// execute a tab or URL action on the given tab
 func runTabAction(_ []string) error {
 	wf.Configure(aw.TextErrors(true))
-	log.Printf("running action %q on tab #%d ...", action, tabID)
-	a, ok := tabActions[action]
-	if !ok {
-		return fmt.Errorf("unknown action %q", action)
+	// load tab info so we can also run URL actions
+	tab, err := mustClient().Tab(tabID)
+	if err != nil {
+		return err
 	}
-	return a.Run(tabID)
+
+	log.Printf("running action %q on tab #%d ...", action, tab.ID)
+	if a, ok := tabActions[action]; ok {
+		return a.Run(tabID)
+	}
+	if a, ok := urlActions[action]; ok {
+		return a.Run(tab.URL)
+	}
+	return fmt.Errorf("unknown action %q", action)
 }
 
 // run an action on a URL
 func runURLAction(_ []string) error {
-	wf.Configure(aw.TextErrors(true))
+	_ = wf.Configure(aw.TextErrors(true))
+	if URL == "" {
+		tab, err := mustClient().Tab(0)
+		if err != nil {
+			return err
+		}
+		URL = tab.URL
+	}
 	log.Printf("running action %q on URL %q ...", action, URL)
 	a, ok := urlActions[action]
 	if !ok {
@@ -364,15 +407,54 @@ func runURLAction(_ []string) error {
 	return a.Run(URL)
 }
 
+// export variables containing info for currently-active tab
+func runCurrentTabInfo(_ []string) error {
+	_ = wf.Configure(aw.TextErrors(true))
+	tab, err := mustClient().Tab(0)
+	if err != nil {
+		return err
+	}
+	if shellVars {
+		fmt.Printf("export FF_TAB=%d\n", tab.ID)
+		fmt.Printf("export FF_WINDOW=%d\n", tab.WindowID)
+		fmt.Printf("export FF_INDEX=%d\n", tab.Index)
+		fmt.Printf("export FF_TITLE=\"%s\"\n", tab.Title)
+		fmt.Printf("export FF_URL=\"%s\"\n", tab.URL)
+		return nil
+	}
+	av := aw.NewArgVars().
+		Var("FF_TAB", fmt.Sprintf("%d", tab.ID)).
+		Var("FF_WINDOW", fmt.Sprintf("%d", tab.WindowID)).
+		Var("FF_INDEX", fmt.Sprintf("%d", tab.Index)).
+		Var("FF_TITLE", tab.Title).
+		Var("FF_URL", tab.URL)
+	return av.Send()
+}
+
 // show actions for currently-active tab
 func runCurrentTab(_ []string) error {
-	tab, err := mustClient().CurrentTab()
+	tab, err := mustClient().Tab(0)
 	if err != nil {
 		return err
 	}
 	tabID = tab.ID
 	URL = tab.URL
 	return runActions([]string{})
+}
+
+// inject JavaScript into specified tab. If tabID is 0, JS in injected
+// into the active tab.
+func runInject(args []string) error {
+	_ = wf.Configure(aw.TextErrors(true))
+	if len(args) != 1 {
+		return fmt.Errorf("inject command takes 1 argument, not %d", len(args))
+	}
+	js, err := mustClient().RunJS(RunJSArg{TabID: tabID, JS: args[0]})
+	if err != nil {
+		return err
+	}
+	fmt.Print(js)
+	return nil
 }
 
 // filter actions for tab or URL

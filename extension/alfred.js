@@ -202,8 +202,14 @@ const Background = function() {
         case 'all-tabs':
           p = self.allTabs();
           break;
+        // DEPRECATED - replaced by self.tab(); unused by newer
+        // versions 0.2.0+ of workflow
+        // Remove from future versions
         case 'current-tab':
-          p = self.currentTab();
+          p = self.tab(0);
+          break;
+        case 'tab':
+          p = self.tab(msg.params);
           break;
         case 'all-bookmarks':
           p = self.allBookmarks();
@@ -318,13 +324,36 @@ const Background = function() {
    * @return {Promise} - Resolves to Tab for current tab.
    * Throws an error if there is no current tab.
    */
-  self.currentTab = () => {
-    return self.activeTab(null).then(t => {
-      if (!t) throw 'no current tab';
-      let tab = Tab(t);
-      console.log(`[current-tab] ${tab}`);
-      return tab;
-    });
+  // self.currentTab = () => {
+  //   return self.activeTab(null).then(t => {
+  //     if (!t) throw 'no current tab';
+  //     let tab = Tab(t);
+  //     console.log(`[current-tab] ${tab}`);
+  //     return tab;
+  //   });
+  // };
+
+  /**
+   * Handle "tab" command.
+   * @param {number} tabId - ID of tab to return.
+   * @return {Promise} - Resolves to Tab for current tab.
+   * Throws an error if there is no current tab.
+   */
+  self.tab = tabId => {
+    if (!tabId) {
+      return self.activeTab(null).then(t => {
+        if (!t) throw 'no current tab';
+        let tab = Tab(t);
+        console.log(`[current-tab] ${tab}`);
+        return tab;
+      });
+    }
+
+    return browser.tabs
+      .get(tabId)
+      .then(t => {
+        return Tab(t);
+      })
   };
 
   /**
@@ -456,6 +485,25 @@ const Background = function() {
   //     console.debug(`js=${js}, results=`, results);
   //   });
   // };
+  /**
+   * Handle "execute-js" command.
+   * @param {Object} params - Tab and bookmarklet IDs.
+   * @param {number} params.tabId - ID of tab to execute JS in.
+   * If tabId is 0, JS is executed in the active tab.
+   * @param {string} params.js - JavaScript to execute.
+   */
+  self.executeJS = params => {
+    console.debug(`execute-js`, params);
+    var p;
+    if (params.tabId) {
+      p = browser.tabs.executeScript(params.tabId, { code: params.js });
+    } else {
+      p = browser.tabs.executeScript({ code: params.js });
+    }
+    return p.then(result => {
+      return JSON.stringify(result);
+    });
+  };
 
   /**
    * Handle "run-bookmarklet" command.

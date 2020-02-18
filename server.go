@@ -92,7 +92,7 @@ func writePID() error {
 }
 
 // start extension client and RPC server
-func runServer(args []string) error {
+func runServer(_ []string) error {
 	wf.Configure(aw.TextErrors(true))
 	if err := writePID(); err != nil {
 		return err

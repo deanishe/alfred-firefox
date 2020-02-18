@@ -71,6 +71,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>51A796F3-097D-42E9-B30B-156D2DDF354B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3B55C751-F185-42F2-94E2-51D978345C6A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>56FBB613-EE25-4DE4-930D-C1F51B9235D8</key>
 		<array>
 			<dict>
@@ -110,6 +123,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>6532A845-EED7-4D18-B9E5-CF600E823EC3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9BC83CA0-50A2-4869-B7EB-BFBD30373A03</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7D1126FC-FAE3-40C1-A536-43C272DF9E69</key>
 		<array>
 			<dict>
@@ -128,6 +154,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>56FBB613-EE25-4DE4-930D-C1F51B9235D8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>90AB6B8E-FA06-41A9-84E6-5FFCE62AC5F2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5BF0D3BF-6F14-4F9A-9B19-A9C967146414</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -175,6 +214,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>9BC83CA0-50A2-4869-B7EB-BFBD30373A03</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E05E7619-441A-4B3A-A8FE-8E21C2C82F10</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>3C2FA73E-6A07-47FB-893A-CA63B538D84C</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F1A91452-6475-4C85-B248-2FBCDB93AF89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</key>
 		<array>
 			<dict>
@@ -199,6 +263,19 @@
 				<string></string>
 				<key>vitoclose</key>
 				<true/>
+			</dict>
+		</array>
+		<key>E05E7619-441A-4B3A-A8FE-8E21C2C82F10</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5FA508A4-6E47-4864-9E18-E367A73CE48E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>E2BDC50E-36DB-45DE-B40E-24BA116ADFE6</key>
@@ -263,6 +340,55 @@
 	<string>Firefox Assistant</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>bm</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading results…</string>
+				<key>script</key>
+				<string>./alfred-firefox -query "$1" bookmarks</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>fsearch</string>
+				<key>subtext</key>
+				<string>Search Firefox Bookmarks</string>
+				<key>title</key>
+				<string>Firefox Bookmarks</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>E51D9E39-F895-4FD6-B159-0CB29463CA21</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -379,51 +505,33 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
 				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
 				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
+				<key>hotmod</key>
 				<integer>0</integer>
-				<key>argumenttype</key>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
 				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>bm</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
+				<key>relatedAppsMode</key>
 				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading results…</string>
-				<key>script</key>
-				<string>./alfred-firefox -query "$1" bookmarks</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>fsearch</string>
-				<key>subtext</key>
-				<string>Search Firefox Bookmarks</string>
-				<key>title</key>
-				<string>Firefox Bookmarks</string>
-				<key>type</key>
-				<integer>5</integer>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>E51D9E39-F895-4FD6-B159-0CB29463CA21</string>
+			<string>5A0372A7-7488-4146-B8CD-17B1834B2EF6</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -473,37 +581,6 @@
 			<string>01563DAF-B949-4BE5-A856-1C32ABFA03E9</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>5A0372A7-7488-4146-B8CD-17B1834B2EF6</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -660,6 +737,14 @@ variables={allvars}
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.hidealfred</string>
+			<key>uid</key>
+			<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
 			<key>config</key>
 			<dict>
 				<key>argument</key>
@@ -677,14 +762,6 @@ variables={allvars}
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
 			<string>1EC09EB7-CFB9-47D8-84DE-37BF4875F906</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.hidealfred</string>
-			<key>uid</key>
-			<string>26D5BE1B-9DAB-4039-9C7E-D639974A2614</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -898,6 +975,70 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>35</integer>
+				<key>hotmod</key>
+				<integer>1441792</integer>
+				<key>hotstring</key>
+				<string>P</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>org.mozilla.firefox</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>90AB6B8E-FA06-41A9-84E6-5FFCE62AC5F2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Run a bookmarklet in the current tab
+#
+# To get the bookmarklet ID, search your bookmarklets (default keyword: bml)
+# and hit ⌘C on the bookmarklet. The copied text has the format "bml:&lt;id&gt;,Name of Bookmarklet".
+# The ID is the random string where &lt;id&gt; is in the above example.
+
+./alfred-firefox -bookmark seoxED9MBuqi run-bookmarklet</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>5BF0D3BF-6F14-4F9A-9B19-A9C967146414</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -943,6 +1084,182 @@ variables={allvars}
 			<string>83477ED1-950C-4E4D-9D22-CDEC701CA68D</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>1</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>S</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>org.mozilla.firefox</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>51A796F3-097D-42E9-B30B-156D2DDF354B</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string># Run an action on the current tab
+
+# Run the built-in "Open in Safari" URL action
+# ./alfred-firefox -action "Open in Safari" tab
+
+# Run the built-in "Close Tabs to Left" tab action
+# ./alfred-firefox -action "Close Tabs to Left" tab
+
+# Run custom "YouTube - Save Video" tab action
+./alfred-firefox -action "YouTube - Save Video" tab</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3B55C751-F185-42F2-94E2-51D978345C6A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alfred-firefox tab-info</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E05E7619-441A-4B3A-A8FE-8E21C2C82F10</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>{var:TRIGGER}</string>
+				<key>passinputasargument</key>
+				<false/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>{var:BUNDLE_ID}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>5FA508A4-6E47-4864-9E18-E367A73CE48E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>current-tab</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>6532A845-EED7-4D18-B9E5-CF600E823EC3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string>Pass to External Trigger</string>
+						<key>uid</key>
+						<string>3C2FA73E-6A07-47FB-893A-CA63B538D84C</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Write to file</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>9BC83CA0-50A2-4869-B7EB-BFBD30373A03</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alfred-firefox tab-info &gt; "$1"
+echo "wrote tab info to $1" &gt;&amp;2</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F1A91452-6475-4C85-B248-2FBCDB93AF89</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -1002,6 +1319,26 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
+		<key>3B55C751-F185-42F2-94E2-51D978345C6A</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>note</key>
+			<string>EXAMPLE: Run an action on current tab/URL via Hotkey</string>
+			<key>xpos</key>
+			<integer>705</integer>
+			<key>ypos</key>
+			<integer>895</integer>
+		</dict>
+		<key>51A796F3-097D-42E9-B30B-156D2DDF354B</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>xpos</key>
+			<integer>535</integer>
+			<key>ypos</key>
+			<integer>895</integer>
+		</dict>
 		<key>56FBB613-EE25-4DE4-930D-C1F51B9235D8</key>
 		<dict>
 			<key>xpos</key>
@@ -1023,6 +1360,35 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 			<key>ypos</key>
 			<integer>210</integer>
 		</dict>
+		<key>5BF0D3BF-6F14-4F9A-9B19-A9C967146414</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>note</key>
+			<string>EXAMPLE: Run a bookmarklet via Hotkey</string>
+			<key>xpos</key>
+			<integer>705</integer>
+			<key>ypos</key>
+			<integer>720</integer>
+		</dict>
+		<key>5FA508A4-6E47-4864-9E18-E367A73CE48E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>705</integer>
+			<key>ypos</key>
+			<integer>1080</integer>
+		</dict>
+		<key>6532A845-EED7-4D18-B9E5-CF600E823EC3</key>
+		<dict>
+			<key>note</key>
+			<string>Share current tab info with other workflows/processes.
+
+Can either write tab info to a file or pass it to another External Trigger.</string>
+			<key>xpos</key>
+			<integer>35</integer>
+			<key>ypos</key>
+			<integer>1135</integer>
+		</dict>
 		<key>7D1126FC-FAE3-40C1-A536-43C272DF9E69</key>
 		<dict>
 			<key>colorindex</key>
@@ -1042,6 +1408,15 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 			<integer>210</integer>
 			<key>ypos</key>
 			<integer>880</integer>
+		</dict>
+		<key>90AB6B8E-FA06-41A9-84E6-5FFCE62AC5F2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>xpos</key>
+			<integer>535</integer>
+			<key>ypos</key>
+			<integer>720</integer>
 		</dict>
 		<key>93E61791-1520-4B4F-9257-C5B28A505058</key>
 		<dict>
@@ -1065,6 +1440,13 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 			<integer>815</integer>
 			<key>ypos</key>
 			<integer>495</integer>
+		</dict>
+		<key>9BC83CA0-50A2-4869-B7EB-BFBD30373A03</key>
+		<dict>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>1155</integer>
 		</dict>
 		<key>A52B48B5-24BA-4D67-A6DD-C2F404F964CC</key>
 		<dict>
@@ -1091,6 +1473,13 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 			<key>ypos</key>
 			<integer>380</integer>
 		</dict>
+		<key>E05E7619-441A-4B3A-A8FE-8E21C2C82F10</key>
+		<dict>
+			<key>xpos</key>
+			<integer>535</integer>
+			<key>ypos</key>
+			<integer>1080</integer>
+		</dict>
 		<key>E2BDC50E-36DB-45DE-B40E-24BA116ADFE6</key>
 		<dict>
 			<key>xpos</key>
@@ -1114,6 +1503,13 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 			<key>ypos</key>
 			<integer>40</integer>
 		</dict>
+		<key>F1A91452-6475-4C85-B248-2FBCDB93AF89</key>
+		<dict>
+			<key>xpos</key>
+			<integer>535</integer>
+			<key>ypos</key>
+			<integer>1230</integer>
+		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
@@ -1132,7 +1528,7 @@ https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md</string>
 		<string>TAB_GODOC</string>
 	</array>
 	<key>version</key>
-	<string>0.1.1</string>
+	<string>0.2.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-firefox</string>
 </dict>
