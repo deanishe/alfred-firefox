@@ -23,6 +23,10 @@ const Popup = function() {
     self.send({ command: 'reconnect' });
   };
 
+  self.reload = () => {
+    self.send({ command: 'reload' });
+  };
+
   self.getStatus = () => {
     self.send({ command: 'status' });
   };
@@ -38,8 +42,8 @@ const Popup = function() {
   const status = document.querySelector('#status');
 
   // document
-  //   .querySelector('#reconnectButton')
-  //   .addEventListener('click', popup.reconnect);
+  //   .querySelector('#reloadButton')
+  //   .addEventListener('click', popup.reload);
 
   setInterval(function() {
     popup.getStatus();

@@ -104,7 +104,7 @@ func (a tAction) Run(tabID int) error {
 	c := mustClient()
 	switch a.action {
 	case "activate":
-		_, err := util.RunAS(`tell application "Firefox" to activate`)
+		_, err := util.RunAS(fmt.Sprintf(`tell application "%s" to activate`, c.appName))
 		if err != nil {
 			return err
 		}
@@ -129,6 +129,10 @@ type uAction struct {
 func (a uAction) Name() string   { return a.name }
 func (a uAction) Icon() *aw.Icon { return a.icon }
 func (a uAction) Run(URL string) error {
+	c, err := newClient()
+	if err == nil {
+		os.Setenv("BROWSER", c.appName)
+	}
 	data, err := util.Run(a.script, URL)
 	if err != nil {
 		return err

@@ -1,4 +1,6 @@
 #!/bin/zsh
 
-/usr/bin/open -a 'Firefox' "$1"
+BROWSER="${BROWSER:-Firefox}"
+
+/usr/bin/open -a "$BROWSER" "$1"
 

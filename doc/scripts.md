@@ -9,6 +9,7 @@ Place your custom scripts in the `scripts` subdirectory of the workflow's data d
 <!-- vim-markdown-toc GFM -->
 
 * [How URL scripts work](#how-url-scripts-work)
+  * [Current browser](#current-browser)
   * [Script icons](#script-icons)
 * [Advanced scripting](#advanced-scripting)
   * [Running actions](#running-actions)
@@ -34,6 +35,17 @@ Scripts can be run via the `Other Actions…` menu (`⌘↩` on a bookmark/tab) 
 Modifier keys (`OPT`, `CMD`, `SHIFT`, `CTRL`) can be arbitrarily combined by joining them with underscores, e.g.: `URL_OPT_SHIFT_CMD`, `URL_CTRL_OPT_SHIFT` etc.).
 
 You can quickly grab the name of a script by using `CMD+C` (copy) on an action in the `Other Actions…` list, which will copy the script's name to the clipboard.
+
+
+### Current browser ###
+
+As the workflow supports different versions of Firefox (Firefox, Firefox Nightly, Firefox Developer Edition), the name of the application it's currently connected to will be specifed in the `BROWSER` environment variable. The default `Open in Firefox.sh` script, for example, uses the command
+
+```bash
+/usr/bin/open -a "$BROWSER" "$1"
+```
+
+to open the URL in the browser the URL came from.
 
 
 ### Script icons ###

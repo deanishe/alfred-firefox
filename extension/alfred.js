@@ -19,13 +19,13 @@ const Tab = tab => {
 
   tab = tab || {};
 
-  obj.id = tab.id || 0;
-  obj.windowId = tab.windowId || 0;
-  obj.index = tab.index || 0;
-  obj.title = tab.title || '';
-  obj.url = new URL(tab.url || '');
-  // obj.favicon  = tab.favIconUrl || '';
-  obj.active = tab.active || false;
+  obj.id         = tab.id          || 0;
+  obj.windowId   = tab.windowId    || 0;
+  obj.index      = tab.index       || 0;
+  obj.title      = tab.title       || '';
+  obj.url        = new URL(tab.url || '');
+  // obj.favicon = tab.favIconUrl  || '';
+  obj.active     = tab.active      || false;
 
   obj.toString = function() {
     return `#${this.id} (${this.windowId}x${this.index}) "${this.title}" - ${this.url}`;
@@ -43,12 +43,12 @@ const Bookmark = bm => {
   let obj = {};
   bm = bm || {};
 
-  obj.id = bm.id || 0;
-  obj.index = bm.index || 0;
-  obj.title = bm.title || '';
+  obj.id       = bm.id       || 0;
+  obj.index    = bm.index    || 0;
+  obj.title    = bm.title    || '';
   obj.parentId = bm.parentId || 0;
-  obj.type = bm.type || '';
-  obj.url = bm.url || '';
+  obj.type     = bm.type     || '';
+  obj.url      = bm.url      || '';
 
   obj.toString = function() {
     return `#${this.id} "${this.title}" - ${this.url}`;
@@ -66,8 +66,8 @@ const HistoryEntry = hi => {
   let obj = {};
   hi = hi || {};
 
-  obj.id = hi.id || 0;
-  obj.url = hi.url || '';
+  obj.id    = hi.id    || 0;
+  obj.url   = hi.url   || '';
   obj.title = hi.title || hi.url;
 
   obj.toString = function() {
@@ -86,13 +86,13 @@ const Download = di => {
   let obj = {};
   di = di || {};
 
-  obj.id = di.id || 0;
-  obj.path = di.filename || '';
-  obj.size = di.fileSize || 0;
-  obj.url = di.url || '';
-  obj.mime = di.mime || '';
-  obj.exists = di.exists || false;
-  obj.error = di.error || '';
+  obj.id     = di.id       || 0;
+  obj.path   = di.filename || '';
+  obj.size   = di.fileSize || 0;
+  obj.url    = di.url      || '';
+  obj.mime   = di.mime     || '';
+  obj.exists = di.exists   || false;
+  obj.error  = di.error    || '';
 
   obj.toString = function() {
     return `#${this.id} "${this.path}" - ${this.url}`;
@@ -106,9 +106,10 @@ const Download = di => {
  * @constructor
  */
 const Background = function() {
-  var self = this;
+  const self = this;
 
   self.port = null,
+    self.nativePort = null,
     self.connected = false;
 
   self.onConnected = port => {
@@ -133,11 +134,13 @@ const Background = function() {
           console.debug('reconnecting to native app ...');
           self.connectNative();
           return;
+        case 'reload':
+          console.debug('reloading extension ...');
+          browser.runtime.reload();
+          return;
       }
     }
   };
-
-  self.nativePort = null;
 
   self.connectNative = () => {
     self.connected = false;
@@ -145,7 +148,7 @@ const Background = function() {
     let listener = payload => {
       if (!self.connected) {
         self.connected = true;
-        self.nativePort.onDisconnect.removeListener(self.connectNativeFailed);
+        // self.nativePort.onDisconnect.removeListener(self.connectNativeFailed);
         self.onConnectedNative();
       }
       self.receiveNative(payload);
@@ -267,12 +270,16 @@ const Background = function() {
    * @param {string} msg.error - Error message if command failed.
    */
   self.sendNative = msg => {
-    try {
-      self.nativePort.postMessage(msg);
-    } catch (err) {
-      console.error(`send error: ${err.message}`);
+    if (self.nativePort) {
+      self.nativePort.postMessage(msg)
+        .then(resp => {
+          console.log(`sent:`, msg);
+          console.log(`response:`, resp);
+        })
+        .catch(err => {
+          console.error(`send error: ${err.message}`);
+      });
     }
-    console.log(`sent:`, msg);
   };
 
   /**

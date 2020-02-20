@@ -48,6 +48,12 @@ func newRPCService(addr string, client *firefox) (*rpcServer, error) {
 	return s, nil
 }
 
+// AppName returns name of browser running the server.
+func (s *rpcServer) AppName(_ string, name *string) error {
+	*name = browserName
+	return nil
+}
+
 // Ping checks connection to Firefox extension. Extension responds with "pong".
 func (s *rpcServer) Ping(_ string, result *string) error {
 	defer util.Timed(time.Now(), "ping")

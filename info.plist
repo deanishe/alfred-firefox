@@ -490,6 +490,8 @@
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
+					<string>org.mozilla.nightly</string>
+					<string>org.mozilla.firefoxdeveloperedition</string>
 					<string>org.mozilla.firefox</string>
 				</array>
 				<key>relatedAppsMode</key>
@@ -995,6 +997,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
+					<string>org.mozilla.nightly</string>
+					<string>org.mozilla.firefoxdeveloperedition</string>
 					<string>org.mozilla.firefox</string>
 				</array>
 				<key>relatedAppsMode</key>
@@ -1108,6 +1112,8 @@ variables={allvars}
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
+					<string>org.mozilla.nightly</string>
+					<string>org.mozilla.firefoxdeveloperedition</string>
 					<string>org.mozilla.firefox</string>
 				</array>
 				<key>relatedAppsMode</key>
@@ -1518,7 +1524,7 @@ Can either write tab info to a file or pass it to another External Trigger.</str
 		<key>TAB_GODOC</key>
 		<string>bml:uFJCA875bTEt,Open in GoDoc</string>
 		<key>URL_DEFAULT</key>
-		<string>Open in Default Application</string>
+		<string>Open in Firefox</string>
 		<key>URL_OPT</key>
 		<string>Open in Safari</string>
 	</dict>

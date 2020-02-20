@@ -10,7 +10,8 @@ import (
 
 // RPC client used by workflow to execute extension actions.
 type rpcClient struct {
-	client *rpc.Client
+	client  *rpc.Client
+	appName string
 }
 
 // Create new RPC client. Returns an error if connection to server fails.
@@ -19,7 +20,13 @@ func newClient() (*rpcClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &rpcClient{c}, nil
+	client := &rpcClient{client: c}
+	client.appName, err = client.AppName()
+	if err != nil {
+		return nil, err
+	}
+	log.Printf("RPC client connected to %q", client.appName)
+	return client, nil
 }
 
 // return new RPC client, panicking if it can't connect to server
@@ -30,6 +37,13 @@ func mustClient() *rpcClient {
 		panic("Cannot Connect to Extension")
 	}
 	return c
+}
+
+// AppName returns the name of the application running the server.
+func (c *rpcClient) AppName() (string, error) {
+	var s string
+	err := c.client.Call("Firefox.AppName", "", &s)
+	return s, err
 }
 
 // Ping checks connection to Firefox extension.

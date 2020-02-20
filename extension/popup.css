@@ -61,6 +61,31 @@ hr {
 	width: 100%;
 }
 
+/*
+.controls {
+	text-align: center;
+}
+
+.controls button {
+	box-shadow: 1px 1px 0px 0px #efefef;
+	background-color: #fff;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	display: inline-block;
+	cursor: pointer;
+	color: #444;
+	font-size: .95em;
+	padding: 6px 30px;
+	text-decoration: none;
+}
+
+.controls button:active {
+	box-shadow: none;
+	position: relative;
+	top: 1px;
+}
+*/
+
 #connected {
 	color: #090;
 }

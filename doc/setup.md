@@ -3,10 +3,13 @@ Setup
 
 Unfortunately, this workflow requires a slightly complex setup :(
 
-Due to Firefox's preposterous lack of support for AppleScript, the workflow needs to install a browser extension to communicate with Firefox.
+Due to Firefox's egregious lack of support for AppleScript, the workflow needs to install a browser extension to communicate with Firefox.
 
 Setup is easier if you install [the workflow][workflow] first, and then the [browser extension][addon].
 
+The extension supports (at least) Firefox, Firefox Nightly and Firefox Developer Edition, but please note that it can only connect to one browser at a time.
+
+If you open a second Firefox, the first will be disconnected. Click on the extension icon to reconnect that browser (and disconnect others).
 
 <!-- vim-markdown-toc GFM -->
 

@@ -22,7 +22,7 @@ var (
 		Name:      "history",
 		Usage:     "alfred-firefox -query <query> history",
 		ShortHelp: "search browsing history",
-		LongHelp:  wrap(`Search Firefox browsing history.`),
+		LongHelp:  wrap(`Search browser history.`),
 		Exec:      runHistory,
 	}
 
@@ -31,7 +31,7 @@ var (
 		Name:      "downloads",
 		Usage:     "alfred-firefox -query <query> downloads",
 		ShortHelp: "search downloads",
-		LongHelp:  wrap(`Search Firefox downloads.`),
+		LongHelp:  wrap(`Search browser downloads.`),
 		Exec:      runDownloads,
 	}
 
@@ -40,7 +40,7 @@ var (
 		Name:      "bookmarks",
 		Usage:     "alfred-firefox -query <query> bookmarks",
 		ShortHelp: "search bookmarks",
-		LongHelp:  wrap(`Search Firefox bookmarks.`),
+		LongHelp:  wrap(`Search browser bookmarks.`),
 		Exec:      runBookmarks,
 	}
 
@@ -49,7 +49,7 @@ var (
 		Name:      "bookmarklets",
 		Usage:     "alfred-firefox -query <query> bookmarklets",
 		ShortHelp: "search bookmarklets",
-		LongHelp:  wrap(`Search Firefox bookmarklets and execute in frontmost tab.`),
+		LongHelp:  wrap(`Search bookmarklets and execute in frontmost tab.`),
 		Exec:      runBookmarklets,
 	}
 
@@ -81,8 +81,8 @@ var (
 	tabsCmd = &ffcli.Command{
 		Name:      "tabs",
 		Usage:     "alfred-firefox [-query <query>] tabs",
-		ShortHelp: "filter Firefox tabs",
-		LongHelp:  wrap(`Filter Firefox tabs and perform actions on them.`),
+		ShortHelp: "filter browser tabs",
+		LongHelp:  wrap(`Filter browser tabs and perform actions on them.`),
 		Exec:      runTabs,
 	}
 
@@ -528,34 +528,34 @@ func runUpdate(_ []string) error {
 // show workflow status and options
 func runStatus(_ []string) error {
 	if c, err := newClient(); err != nil {
-		wf.NewItem("No Connection to Firefox").
+		wf.NewItem("No Connection to Browser").
 			Subtitle(err.Error()).
 			Icon(iconError)
 	} else {
 		if err := c.Ping(); err != nil {
-			wf.NewItem("No Connection to Firefox").
+			wf.NewItem("No Connection to Browser").
 				Subtitle(err.Error()).
 				Icon(iconError)
 
 		} else {
-			wf.NewItem("Connected to Firefox").
+			wf.NewItem("Connected to Browser").
 				Subtitle("Extension is installed and running")
 		}
 	}
 
-	wf.NewItem("Register Workflow with Firefox").
+	wf.NewItem("Register Workflow with Browser").
 		Subtitle("Use if you've updated or moved the workflow and it isn't working").
 		Autocomplete("workflow:register").
 		Icon(iconInstall).
 		Valid(false)
 
-	wf.NewItem("Install Firefox Extension").
-		Subtitle("Get the Firefox extension to integrate this workflow with Firefox").
+	wf.NewItem("Install Browser Extension").
+		Subtitle("Get the browser extension to integrate this workflow with Firefox").
 		Arg(addonURL).
 		Valid(true).
 		Icon(iconAddon).
 		Var("CMD", "url").
-		Var("ACTION", "Open in Firefox").
+		Var("ACTION", urlDefault).
 		Var("URL", addonURL)
 
 	if wf.UpdateAvailable() {

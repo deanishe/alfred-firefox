@@ -4,7 +4,6 @@
 // Command firefox is an Alfred workflow to interact with Firefox.
 package main
 
-// TODO: implement setup (save native application manifest)
 // TODO: package extension
 
 import (
@@ -74,7 +73,7 @@ var (
 	bookmarkID string
 	query      string
 
-	rootFlags = flag.NewFlagSet("firefox", flag.ExitOnError)
+	rootFlags = flag.NewFlagSet("alfred-firefox", flag.ExitOnError)
 	rootCmd   = &ffcli.Command{
 		Usage:     "alfred-firefox <command> [flags] [args...]",
 		ShortHelp: "Firefox workflow for Alfred",
@@ -96,8 +95,8 @@ func init() {
 		"Default URL action")
 	rootFlags.IntVar(&tabID, "tab", 0, "ID of tab")
 	rootFlags.StringVar(&bookmarkID, "bookmark", "", "ID of bookmark")
-	rootFlags.StringVar(&query, "query", "", "Search query")
-	rootFlags.StringVar(&action, "action", "", "Action name")
+	rootFlags.StringVar(&query, "query", "", "search query")
+	rootFlags.StringVar(&action, "action", "", "action name")
 
 	rootCmd.Subcommands = []*ffcli.Command{
 		actionsCmd,

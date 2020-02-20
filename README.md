@@ -9,14 +9,15 @@ Search and manipulate Firefox's bookmarks, history and tabs from Alfred.
 
 ![Animated demo of workflow in use][demo]
 
-The workflow can be easily extended with your own actions.
+The workflow can be easily [extended with your own actions][scripts].
 
 Installation
 ------------
 
+The extension supports (at least) Firefox, Firefox Nightly and Firefox Developer Edition.
+
 1. Download and install the [latest version of the workflow][workflow].
 2. Run `ffass` in Alfred and choose `Install Firefox Extension` to get [the Firefox extension][addon].
-
 
 See [the setup documentation][setup] for more details.
 
@@ -61,6 +62,7 @@ It is written in [Go][go] and heavily based on the [AwGo library][awgo]. The ico
 [workflow]: https://github.com/deanishe/alfred-firefox/releases/latest
 [demo]: https://github.com/deanishe/alfred-firefox/blob/master/demo.gif
 [docs]: https://github.com/deanishe/alfred-firefox/blob/master/doc/index.md
+[scripts]: https://github.com/deanishe/alfred-firefox/blob/master/doc/scripts.md
 [integration]: https://github.com/deanishe/alfred-firefox/blob/master/doc/integration.md
 [usage]: https://github.com/deanishe/alfred-firefox/blob/master/doc/usage.md
 [setup]: https://github.com/deanishe/alfred-firefox/blob/master/doc/setup.md
