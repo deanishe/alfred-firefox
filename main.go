@@ -82,7 +82,10 @@ var (
 		You must also install the Firefox extension for this workflow to work.
 		`),
 		FlagSet: rootFlags,
-		Options: []ff.Option{ff.WithEnvVarNoPrefix()},
+		Options: []ff.Option{
+			ff.WithEnvVarNoPrefix(),
+			ff.WithEnvVarIgnoreCommas(true),
+		},
 		Exec: func(args []string) error {
 			return flag.ErrHelp
 		},
