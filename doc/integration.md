@@ -84,7 +84,7 @@ on run argv
 		repeat 100 times
 			try
 				if exists _file then
-					set _content to (read _file)
+					set _content to do shell script "cat " & quoted form of _path
 					-- Remove JSON file
 					do shell script "rm -f " & quoted form of _path
 					-- Return Alfred JSON to set tab info as workflow variables
