@@ -490,9 +490,9 @@
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
-					<string>org.mozilla.firefoxdeveloperedition</string>
 					<string>org.mozilla.firefox</string>
 					<string>org.mozilla.nightly</string>
+					<string>org.mozilla.firefoxdeveloperedition</string>
 				</array>
 				<key>relatedAppsMode</key>
 				<integer>1</integer>
@@ -997,9 +997,9 @@ variables={allvars}
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
-					<string>org.mozilla.firefoxdeveloperedition</string>
 					<string>org.mozilla.firefox</string>
 					<string>org.mozilla.nightly</string>
+					<string>org.mozilla.firefoxdeveloperedition</string>
 				</array>
 				<key>relatedAppsMode</key>
 				<integer>1</integer>
@@ -1112,9 +1112,9 @@ variables={allvars}
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
-					<string>org.mozilla.firefoxdeveloperedition</string>
 					<string>org.mozilla.firefox</string>
 					<string>org.mozilla.nightly</string>
+					<string>org.mozilla.firefoxdeveloperedition</string>
 				</array>
 				<key>relatedAppsMode</key>
 				<integer>1</integer>
@@ -1251,7 +1251,10 @@ variables={allvars}
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./alfred-firefox tab-info &gt; "$1"
+				<string>output="$1"
+tmp="${output}.tmp"
+./alfred-firefox tab-info &gt; "$tmp"
+command mv -f "$tmp" "$output"
 echo "wrote tab info to $1" &gt;&amp;2</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
