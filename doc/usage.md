@@ -21,7 +21,7 @@ The workflow has the following keywords:
 - `dl [<query>]` — Search downloads
   - `↩` — Open downloaded file
   - `⌘↩` — Reveal downloaded file in Finder
-  - `<your hotkey here>` — Show tab actions for active tab. You must assign your own Hotkey to use this very useful function.
+- `<your hotkey here>` — Show tab actions for active tab. You must assign your own Hotkey to use this very useful function.
 - `ffass [<query>]` — Workflow status & setup
   - `Connected to Firefox` / `No Connection to Firefox` — Whether workflow can connect to Firefox
   - `Register Workflow with Firefox` — Install native app manifest so Firefox knows where to find the workflow. This should only be necessary if you've moved the workflow.
