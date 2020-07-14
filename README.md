@@ -14,7 +14,7 @@ The workflow can be easily [extended with your own actions][scripts].
 Installation
 ------------
 
-The extension supports Alfred 4+ and (at least) Firefox, Firefox Nightly and Firefox Developer Edition.
+The workflow supports Alfred 4+ and the extension works with (at least) Firefox, Firefox Nightly and Firefox Developer Edition.
 
 1. Download and install the [latest version of the workflow][workflow].
 2. Run `ffass` in Alfred and choose `Install Firefox Extension` to get [the Firefox extension][addon].
