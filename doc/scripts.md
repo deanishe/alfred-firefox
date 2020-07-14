@@ -121,7 +121,7 @@ The `inject` command outputs the return value of the executed JavaScript as JSON
 
 ```bash
 #!/bin/bash
-./alfred-firefox inject 'Array.from(document.querySelectorAll("h2")).map(n => n.innerText)'
+./alfred-firefox inject 'Array.from(document.querySelectorAll("h2")).map(el => el.innerText)'
 ```
 
 Outputs (for [this page][execute-docs]):
