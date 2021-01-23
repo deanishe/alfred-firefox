@@ -303,12 +303,14 @@ const Background = function() {
 
   /**
    * Handle "all-tabs" command.
-   * @return {Promise} - Resolves to array of Tab objects for all tabs.
+   * @return {Promise} - Resolves to array of Tab objects for all tabs sorted
+   * by most recently used.
    */
   self.allTabs = () => {
-    return browser.tabs.query({}).then(tabs => {
-      return tabs.map(t => Tab(t));
-    });
+    return browser.tabs.query({}).then(tabs => tabs
+      .sort((a, b) => (b?.lastAccessed ?? 0) - (a?.lastAccessed ?? 0))
+      .map(t => Tab(t))
+    );
   };
 
   /**
