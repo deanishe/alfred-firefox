@@ -490,9 +490,9 @@
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
-					<string>org.mozilla.firefox</string>
 					<string>org.mozilla.nightly</string>
 					<string>org.mozilla.firefoxdeveloperedition</string>
+					<string>org.mozilla.firefox</string>
 				</array>
 				<key>relatedAppsMode</key>
 				<integer>1</integer>
@@ -997,9 +997,9 @@ variables={allvars}
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
-					<string>org.mozilla.firefox</string>
 					<string>org.mozilla.nightly</string>
 					<string>org.mozilla.firefoxdeveloperedition</string>
+					<string>org.mozilla.firefox</string>
 				</array>
 				<key>relatedAppsMode</key>
 				<integer>1</integer>
@@ -1112,9 +1112,9 @@ variables={allvars}
 				<integer>0</integer>
 				<key>relatedApps</key>
 				<array>
-					<string>org.mozilla.firefox</string>
 					<string>org.mozilla.nightly</string>
 					<string>org.mozilla.firefoxdeveloperedition</string>
+					<string>org.mozilla.firefox</string>
 				</array>
 				<key>relatedAppsMode</key>
 				<integer>1</integer>
@@ -1251,10 +1251,7 @@ variables={allvars}
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>output="$1"
-tmp="${output}.tmp"
-./alfred-firefox tab-info &gt; "$tmp"
-command mv -f "$tmp" "$output"
+				<string>./alfred-firefox tab-info &gt; "$1"
 echo "wrote tab info to $1" &gt;&amp;2</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -1537,7 +1534,7 @@ Can either write tab info to a file or pass it to another External Trigger.</str
 		<string>TAB_GODOC</string>
 	</array>
 	<key>version</key>
-	<string>0.2.1</string>
+	<string>0.2.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/deanishe/alfred-firefox</string>
 </dict>

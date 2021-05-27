@@ -652,4 +652,5 @@ func checkForUpdate() {
 	if wf.UpdateCheckDue() && !wf.IsRunning("update") {
 		wf.RunInBackground("update", exec.Command(os.Args[0], "update"))
 	}
+	// TODO: show "update available" message
 }
