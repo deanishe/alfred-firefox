@@ -271,14 +271,8 @@ const Background = function() {
    */
   self.sendNative = msg => {
     if (self.nativePort) {
-      self.nativePort.postMessage(msg)
-        .then(resp => {
-          console.log(`sent:`, msg);
-          console.log(`response:`, resp);
-        })
-        .catch(err => {
-          console.error(`send error: ${err.message}`);
-      });
+      self.nativePort.postMessage(msg);
+      console.log(`sent:`, msg);
     }
   };
 
