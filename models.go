@@ -97,5 +97,5 @@ type Download struct {
 }
 
 func (d Download) String() string {
-	return fmt.Sprintf("Download(id=%q, path=%q, url=%q)", d.ID, d.Path, d.URL)
+	return fmt.Sprintf("Download(id=%d, path=%q, url=%q)", d.ID, d.Path, d.URL)
 }

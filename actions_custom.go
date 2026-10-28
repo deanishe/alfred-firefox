@@ -33,7 +33,7 @@ type customAction struct {
 
 	// Modifier keys. If empty, the action isn't bound to
 	// any keyboard shortcut, but is still shown in action lists.
-	mods []aw.ModKey
+	mods []string
 }
 
 // add action to Bookmark/Tab item
@@ -65,7 +65,7 @@ func loadCustomActions() customActions {
 		id      string
 		name    string
 		kind    string
-		mods    []aw.ModKey
+		mods    []string
 	)
 	for _, s := range os.Environ() {
 		parts := strings.SplitN(s, "=", 2)
@@ -98,8 +98,8 @@ func loadCustomActions() customActions {
 }
 
 // parse string of form "cmd_opt_shift" into slice of ModKeys
-func parseMods(s string) []aw.ModKey {
-	var keys []aw.ModKey
+func parseMods(s string) []string {
+	var keys []string
 	for _, v := range strings.Split(s, "_") {
 		switch v {
 		case "cmd":

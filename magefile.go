@@ -37,7 +37,13 @@ var (
 func init() {
 	var err error
 	if info, err = build.NewInfo(); err != nil {
-		panic(err)
+		// Alfred isn't installed/configured (e.g. on CI), which is fine for
+		// everything except Link. Point at a throwaway preferences dir.
+		os.Setenv("alfred_preferences", filepath.Join(os.TempDir(), "alfred-firefox", "Alfred.alfredpreferences"))
+		os.Setenv("alfred_version", "5")
+		if info, err = build.NewInfo(); err != nil {
+			panic(err)
+		}
 	}
 }
 
@@ -51,10 +57,18 @@ var Aliases = map[string]interface{}{
 // If not set, running mage will list available targets
 // var Default = Build
 
-// Dist build & export workflow
+// Dist build & export a universal workflow in dist directory
 func Dist() {
 	mg.Deps(cleanBuild, Deps)
-	mg.SerialDeps(Build, Export, Extension)
+	mg.SerialDeps(Universal, Export)
+}
+
+// Test run go vet and go test
+func Test() error {
+	if err := sh.RunV("go", "vet", "./..."); err != nil {
+		return err
+	}
+	return sh.RunV("go", "test", "./...")
 }
 
 // Extension build browser extension in dist directory
@@ -100,6 +114,41 @@ func Build() error {
 		return err
 	}
 	return sh.RunWith(info.Env(), "go", "build", "-o", buildDir+"/"+binaryName, ".")
+}
+
+// Universal build a universal (arm64 + amd64) executable in build directory
+func Universal() error {
+	mg.Deps(Assets)
+	fmt.Println("building universal executable ...")
+	if err := os.MkdirAll(buildDir, 0750); err != nil {
+		return err
+	}
+	archs := []string{"arm64", "amd64"}
+	parts := make([]string, 0, len(archs))
+	for _, arch := range archs {
+		env := map[string]string{}
+		for k, v := range info.Env() {
+			env[k] = v
+		}
+		env["GOOS"] = "darwin"
+		env["GOARCH"] = arch
+		env["CGO_ENABLED"] = "0"
+		out := fmt.Sprintf("%s/%s-%s", buildDir, binaryName, arch)
+		if err := sh.RunWith(env, "go", "build", "-o", out, "."); err != nil {
+			return err
+		}
+		parts = append(parts, out)
+	}
+	args := append([]string{"-create", "-output", buildDir + "/" + binaryName}, parts...)
+	if err := sh.Run("lipo", args...); err != nil {
+		return err
+	}
+	for _, p := range parts {
+		if err := os.Remove(p); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // Link symlink build directory to Alfred's workflow directory

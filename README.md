@@ -22,6 +22,23 @@ The workflow supports Alfred 4+ and the extension works with (at least) Firefox,
 See [the setup documentation][setup] for more details.
 
 
+Building from source
+--------------------
+
+You only need [Go][go] (the version in `go.mod`). Builds are driven by [Mage][mage], which Go fetches on first use, so there is nothing else to install and Alfred does not need to be present.
+
+```sh
+go run github.com/magefile/mage -l        # list all targets
+go run github.com/magefile/mage test      # go vet + go test
+go run github.com/magefile/mage dist      # universal (Apple Silicon + Intel) .alfredworkflow in ./dist
+go run github.com/magefile/mage build     # build for this machine only (faster)
+go run github.com/magefile/mage extension # Firefox extension (.xpi) in ./dist
+go run github.com/magefile/mage link      # symlink the build into Alfred (development)
+```
+
+Double-click the `.alfredworkflow` in `dist/` to install it. `link` needs Alfred to be detectable; if it isn't, set `alfred_preferences` to the path of your `Alfred.alfredpreferences`. If you have Mage installed, you can run `mage dist` etc. directly.
+
+
 Usage
 -----
 
@@ -57,6 +74,7 @@ This workflow and extension are released under the [MIT licence][licence].
 It is written in [Go][go] and heavily based on the [AwGo library][awgo]. The icons are based on [Font Awesome][fontawesome].
 
 
+[mage]: https://magefile.org
 [addon]: https://addons.mozilla.org/en-US/firefox/addon/alfred-launcher-integration/
 [licence]: https://github.com/deanishe/alfred-firefox/blob/master/LICENCE.txt
 [workflow]: https://github.com/deanishe/alfred-firefox/releases/latest
